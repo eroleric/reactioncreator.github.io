@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Promo video placeholder</title>
+  <desc id="desc">A placeholder for the ReactionCreator promo video.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset=".48" stop-color="#4A1FC7"/>
+      <stop offset="1" stop-color="#1EC8C1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" rx="48" fill="url(#bg)"/>
+  <rect x="72" y="72" width="1136" height="576" rx="34" fill="#FFFFFF" fill-opacity=".12" stroke="#FFFFFF" stroke-opacity=".34" stroke-width="3"/>
+  <circle cx="640" cy="344" r="88" fill="#FFFFFF"/>
+  <path d="M616 296v96l82-48-82-48Z" fill="#6C2CF1"/>
+  <text x="640" y="488" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="48" font-weight="900">Promo Video Placeholder</text>
+  <text x="640" y="538" text-anchor="middle" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="26" font-weight="700">Replace with a reaction workflow demo</text>
+</svg>

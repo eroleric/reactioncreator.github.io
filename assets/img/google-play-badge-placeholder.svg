@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 124" role="img" aria-labelledby="title desc">
+  <title id="title">Google Play badge placeholder</title>
+  <desc id="desc">A placeholder badge to replace with the official Google Play asset.</desc>
+  <rect width="420" height="124" rx="22" fill="#111827"/>
+  <rect x="4" y="4" width="412" height="116" rx="18" fill="none" stroke="#374151" stroke-width="2"/>
+  <path d="M42 31v62l41-31-41-31Z" fill="#1EC8C1"/>
+  <path d="M42 31l55 31-14 10-41-41Z" fill="#FFD43B"/>
+  <path d="M42 93l55-31-14-10-41 41Z" fill="#FF4D6D"/>
+  <path d="M97 62 83 52v20l14-10Z" fill="#6C2CF1"/>
+  <text x="125" y="48" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="18" font-weight="700">GET IT ON</text>
+  <text x="125" y="82" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="32" font-weight="900">Google Play</text>
+  <text x="125" y="104" fill="#9CA3AF" font-family="Arial, sans-serif" font-size="12" font-weight="700">BADGE PLACEHOLDER</text>
+</svg>
