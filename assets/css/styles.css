@@ -141,6 +141,13 @@ textarea {
   color: var(--surface);
   box-shadow: 0 10px 24px rgba(108, 44, 241, 0.2);
   font-size: 14px;
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .brand-text {
@@ -572,6 +579,21 @@ textarea {
 .asset-card.logo-asset img,
 .asset-card.badge-asset img {
   padding: 18px;
+}
+
+.asset-card.logo-asset img {
+  background: #ffffff;
+}
+
+.app-screenshot img {
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+.wide-promo img {
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .callout {

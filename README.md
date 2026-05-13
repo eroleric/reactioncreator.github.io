@@ -14,27 +14,52 @@ website/
   support.html
   robots.txt
   README.md
+  Images/
+    9_16_layout.png
+    9_16_layout_side_view.png
+    9_16_layout_tool.png
+    Applogo image.png
+    chroma.png
+    export_page.png
+    export_page_side_view.png
+    Faviconapp icon.png
+    google-play-badge.png
+    video_preview.png
+    video_preview_side_view.png
   assets/
     css/
       styles.css
     js/
       main.js
     img/
-      google-play-badge-placeholder.svg
-      logo-placeholder.svg
-      promo-video-placeholder.svg
-      screenshot-chroma-placeholder.svg
-      screenshot-editor-placeholder.svg
-      screenshot-exports-placeholder.svg
+      app-logo.png
+      chroma.png
+      export-page.png
+      export-page-side-view.png
+      favicon.png
+      google-play-badge.png
+      layout-9-16.png
+      layout-9-16-side-view.png
+      layout-9-16-tools.png
+      video-preview.png
+      video-preview-side-view.png
 ```
 
-## What To Replace Before Launch
+## Asset Mapping
 
-- Replace `assets/img/logo-placeholder.svg` with the final logo or website logo.
-- Replace screenshot placeholder SVGs with real app screenshots.
-- Replace `assets/img/promo-video-placeholder.svg` with a real promo video thumbnail, or embed/link a hosted promo video.
-- Replace `assets/img/google-play-badge-placeholder.svg` with the official Google Play badge.
-- Replace Google Play placeholder links with the live Play Store URL.
+- `app-logo.png` is used for the app logo media section and support page.
+- `favicon.png` is used for the browser icon and small header brand mark.
+- `google-play-badge.png` is used on the Home and Pricing pages.
+- `layout-9-16.png` is used in the Home hero.
+- `layout-9-16-tools.png` is used on the Features page.
+- `chroma.png` is used for the Chroma layout feature section.
+- `video-preview-side-view.png` is used as a promotional preview image.
+- `export-page-side-view.png` is used as a promotional exports image.
+- The original uploaded PNGs are preserved in `Images/`.
+
+## Still Needed Before Launch
+
+- Replace Google Play links with the live Play Store URL.
 - Confirm the support email. The current site uses `reactioncreatorteam@gmail.com`.
 - Have the Privacy Policy and Terms reviewed before publishing.
 
