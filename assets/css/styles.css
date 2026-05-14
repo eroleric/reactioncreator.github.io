@@ -664,8 +664,10 @@ textarea {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-xl);
-  min-height: 620px;
-  padding: 24px;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  padding: 18px;
   background: linear-gradient(145deg, #111827, #2b1f60 58%, #063b42);
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -684,33 +686,18 @@ textarea {
   z-index: -1;
 }
 
-.mode-preview img {
-  width: 100%;
+.mode-preview-image {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 380px);
   border-radius: 24px;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
 }
 
-.mode-preview-main {
-  position: absolute;
-  right: 28px;
-  top: 48px;
-  width: min(58%, 330px);
-  transform: rotate(2deg);
-}
-
-.mode-preview-side {
-  position: absolute;
-  left: 26px;
-  bottom: 34px;
-  width: min(54%, 310px);
-  transform: rotate(-5deg);
-}
-
 .mode-preview-label {
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  top: 26px;
+  position: relative;
+  z-index: 2;
+  width: min(100%, 440px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1334,39 +1321,10 @@ textarea {
     width: min(100%, 320px);
   }
 
-  .mode-preview {
-    min-height: 560px;
-  }
-
   .mode-preview-label {
-    position: relative;
-    left: auto;
-    right: auto;
-    top: auto;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 18px;
     border-radius: 20px;
-  }
-
-  .mode-preview-main,
-  .mode-preview-side {
-    position: relative;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    width: min(82%, 330px);
-    margin-inline: auto;
-  }
-
-  .mode-preview-main {
-    transform: rotate(2deg);
-    margin-bottom: -118px;
-  }
-
-  .mode-preview-side {
-    transform: rotate(-4deg);
   }
 
   .grid-3,
@@ -1449,17 +1407,7 @@ textarea {
   }
 
   .mode-preview {
-    min-height: 520px;
     padding: 18px;
-  }
-
-  .mode-preview-main,
-  .mode-preview-side {
-    width: min(94%, 300px);
-  }
-
-  .mode-preview-main {
-    margin-bottom: -92px;
   }
 
   .download-panel {
