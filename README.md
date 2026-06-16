@@ -8,6 +8,8 @@ Production marketing and support website for ReactionCreator, the mobile reactio
 - `features.html`
 - `pricing.html`
 - `privacy.html`
+- `privacy-policy/index.html`
+- `account-deletion/index.html`
 - `terms.html`
 - `support.html`
 

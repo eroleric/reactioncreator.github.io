@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account Deletion - Reaction Creator</title>
+    <meta name="description" content="How to request deletion of a Reaction Creator account.">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+  </head>
+  <body data-page="account-deletion">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav wrap" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="ReactionCreator home">
+          <span class="brand-mark"><img src="../assets/img/favicon.png" alt=""></span>
+          <span class="brand-text"><span>ReactionCreator</span><small>Mobile reaction editor</small></span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div class="nav-links" id="site-nav" data-nav-links>
+          <a href="../index.html" data-nav="home">Home</a>
+          <a href="../features.html" data-nav="features">Features</a>
+          <a href="../pricing.html" data-nav="pricing">Pricing</a>
+          <a href="../privacy-policy/" data-nav="privacy">Privacy</a>
+          <a href="../terms.html" data-nav="terms">Terms</a>
+          <a href="../support.html" data-nav="support">Support</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="wrap">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Reaction Creator</div>
+          <h1>Account Deletion</h1>
+          <p>Last updated: June 16, 2026. Reaction Creator is published by Phantom Code. This page explains how to request deletion of a Reaction Creator account.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap legal-layout">
+          <aside class="legal-nav" aria-label="Account deletion sections">
+            <a href="#meaning">What deletion means</a>
+            <a href="#in-app">Delete in the app</a>
+            <a href="#without-app">Without the app</a>
+            <a href="#timing">Timing</a>
+            <a href="#deleted">Data deleted</a>
+            <a href="#retained">Data retained</a>
+            <a href="#subscriptions">Subscriptions</a>
+            <a href="#exports">Exports and sharing</a>
+            <a href="#contact">Contact</a>
+          </aside>
+
+          <div class="legal-content">
+            <article class="card policy-card" id="meaning">
+              <h2>What account deletion means</h2>
+              <p>Deleting a Reaction Creator account starts a pending deletion period of up to 24 hours. After that period, the scheduled backend process is designed to delete or anonymize the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
+              <p>Deleting the app from your phone is not the same as deleting your account. Uninstalling the app removes app access from that device, but it does not send an account deletion request to Reaction Creator.</p>
+              <p>Account deletion does not cancel Google Play subscriptions and does not automatically remove local files, public exports, shared copies, Google Play purchase records, RevenueCat records, Firebase Analytics history, Crashlytics reports, Cloud Functions logs, or other operational logs.</p>
+            </article>
+
+            <article class="card policy-card" id="in-app">
+              <h2>Delete your account in the app</h2>
+              <ol>
+                <li>Open Reaction Creator.</li>
+                <li>Sign in to the account you want to delete.</li>
+                <li>Open the side menu.</li>
+                <li>Find the account removal section.</li>
+                <li>Tap Delete account.</li>
+                <li>Confirm the deletion request.</li>
+              </ol>
+              <p>After the request is accepted, Reaction Creator signs you out and marks the account as pending deletion.</p>
+            </article>
+
+            <article class="card policy-card" id="without-app">
+              <h2>Request deletion without the app</h2>
+              <p>If you cannot access the app, email <a class="email-link" href="mailto:reactioncreatorteam@gmail.com?subject=Reaction%20Creator%20account%20deletion%20request">reactioncreatorteam@gmail.com</a>.</p>
+              <p>Include the subject line <strong>Reaction Creator account deletion request</strong>, the Google account email address used to sign in to Reaction Creator, and a short statement that you want to delete your Reaction Creator account.</p>
+              <p>For your security, support may need to verify that you control the account before acting on a request.</p>
+            </article>
+
+            <article class="card policy-card" id="timing">
+              <h2>How long deletion takes</h2>
+              <p>The in-app deletion request starts a pending deletion period of up to 24 hours.</p>
+              <p>If you sign in again before the cancellation period expires, the deletion request is cancelled and the account remains active.</p>
+              <p>After the pending deletion period expires, signing in no longer reactivates the account. A scheduled backend process runs periodically and is designed to delete or anonymize the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
+              <p>Because the backend process runs on a schedule, final processing can occur after the pending period has ended.</p>
+            </article>
+
+            <article class="card policy-card" id="deleted">
+              <h2>Data handled by the app-account deletion process</h2>
+              <p>The implemented backend process is designed to delete or anonymize:</p>
+              <ul>
+                <li>the Firebase Authentication account for Reaction Creator</li>
+                <li>the associated Firestore account document</li>
+                <li>associated nested Firestore quota reservation records</li>
+              </ul>
+            </article>
+
+            <article class="card policy-card" id="retained">
+              <h2>Data that may be retained</h2>
+              <p>The account deletion process does not automatically remove:</p>
+              <ul>
+                <li>RevenueCat customer records or subscription entitlement history</li>
+                <li>Google Play purchase or subscription records</li>
+                <li>Firebase Analytics history, aggregates, or reports</li>
+                <li>Firebase Crashlytics crash reports and diagnostics</li>
+                <li>Cloud Functions, Cloud Logging, or other operational logs</li>
+                <li>app-private media, projects, settings, preferences, or export files that remain on your device</li>
+                <li>public Gallery, Movies, or Downloads exports</li>
+                <li>copies that you shared to another app or service</li>
+                <li>records required for legal, tax, fraud-prevention, security, or support purposes</li>
+              </ul>
+              <p>To remove device files, use Reaction Creator delete actions where available, clear app storage, uninstall the app, or delete public exports from your device Gallery or Files app.</p>
+            </article>
+
+            <article class="card policy-card" id="subscriptions">
+              <h2>Subscriptions and purchases</h2>
+              <p>Deleting a Reaction Creator account does not cancel a Google Play subscription. Manage or cancel subscriptions in Google Play.</p>
+              <p>Google Play and RevenueCat may keep purchase and subscription records after the Reaction Creator account is deleted. These records are handled under their policies and legal requirements.</p>
+              <p>You may contact <a class="email-link" href="mailto:reactioncreatorteam@gmail.com">reactioncreatorteam@gmail.com</a> to request deletion or removal of associated RevenueCat customer data where supported. Reaction Creator cannot delete Google Play billing records.</p>
+            </article>
+
+            <article class="card policy-card" id="exports">
+              <h2>Exported and shared files</h2>
+              <p>Recorder exports saved inside Reaction Creator are app-private until you download or share them.</p>
+              <p>Recorder exports downloaded to public Downloads and Editor Mode exports copied to public Movies storage remain on your device until you delete them.</p>
+              <p>When you share an export with another app, the receiving app controls its copy. Deleting your Reaction Creator account does not delete files from the receiving app.</p>
+            </article>
+
+            <article class="card policy-card">
+              <h2>Analytics, crash, ad, and subscription records</h2>
+              <p>Firebase Analytics aggregate data, Crashlytics diagnostic records, Google Mobile Ads and UMP records, RevenueCat customer or subscription records, Google Play purchase records, and Google Cloud logging or security records may remain according to provider retention rules or user control. These records are not automatically removed by the in-app account deletion worker.</p>
+            </article>
+
+            <article class="card policy-card" id="contact">
+              <h2>Contact</h2>
+              <p>Reaction Creator is published by Phantom Code. For account deletion questions, privacy questions, or requests that are not completed through the app, email <a class="email-link" href="mailto:reactioncreatorteam@gmail.com">reactioncreatorteam@gmail.com</a>.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div><h2>ReactionCreator</h2><p>Account deletion information for the Reaction Creator Android app.</p></div>
+        <div><h3>Pages</h3><div class="footer-links"><a href="../index.html">Home</a><a href="../features.html">Features</a><a href="../pricing.html">Pricing</a><a href="../support.html">Contact support</a></div></div>
+        <div><h3>Policies</h3><div class="footer-links"><a href="../privacy-policy/">Privacy Policy</a><a href="../account-deletion/">Account Deletion</a><a href="../terms.html">Terms</a></div></div>
+      </div>
+      <div class="footer-bottom"><div class="wrap">&copy; <span data-year></span> ReactionCreator. All rights reserved.</div></div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

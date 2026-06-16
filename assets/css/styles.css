@@ -1002,11 +1002,14 @@ textarea {
   grid-template-columns: 270px minmax(0, 1fr);
   gap: 30px;
   align-items: start;
+  min-width: 0;
 }
 
 .legal-nav {
   position: sticky;
   top: 98px;
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 18px;
@@ -1032,6 +1035,7 @@ textarea {
 .legal-content {
   display: grid;
   gap: 18px;
+  min-width: 0;
 }
 
 .policy-card ul,
