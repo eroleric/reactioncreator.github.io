@@ -37,7 +37,7 @@
         <div class="wrap">
           <div class="eyebrow"><span class="eyebrow-dot"></span> Reaction Creator</div>
           <h1>Privacy Policy</h1>
-          <p>Effective date: June 16, 2026. This policy explains how the Reaction Creator Android app collects, processes, stores, and shares information.</p>
+          <p>Effective date: August 23, 2026. This policy explains how the Reaction Creator Android app collects, processes, stores, and shares information.</p>
         </div>
       </section>
 
@@ -113,7 +113,7 @@
               <h2>Camera, microphone, imported media, and exports</h2>
               <p>Reaction Creator asks for camera permission for live preview and reaction recording. It asks for microphone permission when microphone audio will be recorded.</p>
               <p>The app can process live camera preview, microphone audio, recorded reaction videos, imported video and audio, Creator Library videos and thumbnails, Editor Mode projects, text, templates, My Sounds, rendered previews, temporary files, thumbnails, and exports.</p>
-              <p>The reviewed app code processes these media files on the device using Android media APIs, local FFmpeg processing, Media3, and on-device ML Kit selfie segmentation. No app-owned media upload path was found in the reviewed code.</p>
+              <p>The reviewed app code processes these media files on the device using Android platform media APIs, Media3, and on-device ML Kit selfie segmentation. No app-owned media upload path was found in the reviewed code.</p>
               <p>Analytics can receive media type, audio mode, duration, layout, and render timing. Analytics is not intended to receive media content itself.</p>
             </article>
 
@@ -129,8 +129,8 @@
 
             <article class="card policy-card" id="deletion">
               <h2>Account deletion</h2>
-              <p>You can request account deletion in the app after signing in. When you request deletion, your Firestore account document is marked as pending deletion, the app signs you out, and a pending deletion period of up to 24 hours begins.</p>
-              <p>If you sign in before that period expires, the request is cancelled and the account remains active. After the pending deletion period expires, a scheduled backend process is designed to delete or anonymize the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
+              <p>You can request account deletion in the app after signing in. When you request deletion, your Firestore account document is marked as pending deletion, the app signs you out, and an approximately 7-day cancellation period begins.</p>
+              <p>If you sign in before that period expires, the request is cancelled and the account remains active. After the cancellation period expires, a scheduled backend process is designed to delete the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
               <p>The backend process runs on a schedule, so final processing can occur after the pending period has ended. A successful deletion request means deletion has been scheduled; it does not mean permanent deletion has already finished.</p>
               <p>This account deletion process does not automatically remove RevenueCat or Google Play customer, purchase, or subscription records; historical Firebase Analytics or Crashlytics data; Cloud Functions, Cloud Logging, or other operational logs; app-private files still on your device; public Gallery, Movies, or Downloads exports; copies shared to another app; or backend records outside the Firebase user subtree unless they are added to the deletion process.</p>
             </article>
