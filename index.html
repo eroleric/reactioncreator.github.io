@@ -1,193 +1,438 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ReactionCreator - Reaction Video Maker</title>
-    <meta name="description" content="ReactionCreator helps creators record, compose, and export polished reaction videos from a mobile-first editor.">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="apple-touch-icon" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css">
-  </head>
-  <body data-page="home">
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <nav class="nav wrap" aria-label="Main navigation">
-        <a class="brand" href="index.html" aria-label="ReactionCreator home">
-          <span class="brand-mark"><img src="assets/img/favicon.png" alt=""></span>
-          <span class="brand-text">
-            <span>ReactionCreator</span>
-            <small>Mobile reaction editor</small>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ff">
+
+  <title>Reaction Creator - Make Reaction Videos Faster</title>
+  <meta
+    name="description"
+    content="Choose a layout, add a source video, record your reaction, and export. Edit only when you want to."
+  >
+  <link rel="canonical" href="https://www.reactioncreator.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Reaction Creator">
+  <meta property="og:title" content="Reaction Creator - Make Reaction Videos Faster">
+  <meta property="og:description" content="Choose a layout, add a source video, record your reaction, and export. Edit only when you want to.">
+  <meta property="og:url" content="https://www.reactioncreator.com/">
+  <meta property="og:image" content="https://www.reactioncreator.com/assets/img/social-preview.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/home-v2.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Reaction Creator home">
+        <span class="brand__icon">
+          <img src="assets/img/favicon.png" alt="" width="512" height="512">
+        </span>
+        <span class="brand__text">
+          <strong>Reaction Creator</strong>
+          <small>Reaction videos, simplified.</small>
+        </span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-controls="site-menu"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span aria-hidden="true"></span>
+        <span class="screen-reader-only">Open menu</span>
+      </button>
+
+      <div class="nav-menu" id="site-menu" data-nav-menu>
+        <a href="#workflow">How it works</a>
+        <a href="#editor">Editor Mode</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="support.html">Support</a>
+        <a class="nav-menu__cta" href="https://play.google.com/store/apps/details?id=com.reaction.reactioncreator">Get the app</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- IMAGE SLOT 01: Images/Hero.webp | Recommended ratio: 4:5 portrait -->
+    <section class="hero">
+      <div class="hero__orb hero__orb--one" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--two" aria-hidden="true"></div>
+
+      <div class="shell hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow"><span></span>Built for reaction creators</p>
+
+          <h1>
+            Create reactions
+            <em>that pop.</em>
+          </h1>
+
+          <p class="hero__description">
+            Choose the frame, add a video, record your take, and export. No editing timeline required.
+          </p>
+
+          <div class="button-row">
+            <a class="button button--primary" href="https://play.google.com/store/apps/details?id=com.reaction.reactioncreator">
+              Get Reaction Creator <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button--secondary" href="#workflow">
+              See the workflow <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <p class="platform-note">Available for Android creators</p>
+        </div>
+
+        <figure class="product-visual product-visual--hero">
+          <img
+            src="Images/Hero.webp"
+            alt="Reaction Creator recording and layout screens"
+            width="1122"
+            height="1402"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </figure>
+      </div>
+
+      <div class="shell format-rail" aria-label="Available reaction layouts">
+        <p>Four ways to frame the moment</p>
+        <ul>
+          <li>9:16</li>
+          <li>Picture in picture</li>
+          <li>Cutout</li>
+          <li>16:9</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="promise" id="workflow">
+      <div class="shell promise__inner">
+        <p class="section-label">Simple by default</p>
+        <h2>
+          From source video to finished reaction.
+          <span>No edit required.</span>
+        </h2>
+        <p>
+          Reaction Creator keeps the recording workflow focused. Make the reaction first, then decide whether it needs anything else.
+        </p>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 02: Images/choose_layout.webp | Recommended ratio: 4:3 landscape -->
+    <section class="layout-stage" id="features">
+      <div class="shell">
+        <div class="stage-heading stage-heading--split">
+          <div>
+            <p class="section-label">01 / Choose the frame</p>
+            <h2>Your reaction. <span>Your layout.</span></h2>
+          </div>
+          <p>
+            Start with the format your audience will see: vertical, picture in picture, Cutout, or landscape.
+          </p>
+        </div>
+
+        <figure class="product-visual product-visual--cinema">
+          <img
+            src="Images/choose_layout.webp"
+            alt="Reaction Creator showing 9:16, picture-in-picture, Cutout, and 16:9 layouts"
+            width="1448"
+            height="1086"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 03: Images/upload_react.webp | Recommended ratio: 4:3 landscape -->
+    <section class="record-stage">
+      <div class="shell record-stage__grid">
+        <div class="record-stage__copy">
+          <p class="section-label">02 / Add the source</p>
+          <h2>Bring in the video. <span>Bring the reaction.</span></h2>
+          <p>
+            Add the video you want to react to, keep your chosen composition in view, and capture the take in one focused workflow.
+          </p>
+
+          <ol class="workflow-list">
+            <li><span>01</span><strong>Choose the reaction layout</strong></li>
+            <li><span>02</span><strong>Add the source video</strong></li>
+            <li><span>03</span><strong>Record your reaction</strong></li>
+          </ol>
+        </div>
+
+        <figure class="product-visual product-visual--record">
+          <img
+            src="Images/upload_react.webp"
+            alt="Reaction Creator source upload and reaction recording workflow"
+            width="1448"
+            height="1086"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <section class="export-message">
+      <div class="shell export-message__inner">
+        <p class="section-label section-label--light">03 / Finish the take</p>
+        <h2>Recorded it? <span>You can export it.</span></h2>
+        <p>
+          A reaction can be ready as soon as the recording feels right. There is no required editing step between your take and your finished video.
+        </p>
+
+        <ol class="workflow-rail" aria-label="Core reaction workflow">
+          <li><small>01</small><strong>Choose layout</strong></li>
+          <li><small>02</small><strong>Add source</strong></li>
+          <li><small>03</small><strong>React</strong></li>
+          <li><small>04</small><strong>Export</strong></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 04: Images/cutout.webp | Recommended ratio: 4:3 landscape -->
+    <section class="cutout-stage">
+      <div class="shell cutout-stage__grid">
+        <figure class="product-visual product-visual--cutout">
+          <img
+            src="Images/cutout.webp"
+            alt="Reaction Creator Cutout layout placing the creator over the source video"
+            width="1448"
+            height="1086"
+            loading="lazy"
+          >
+        </figure>
+
+        <div class="cutout-stage__copy">
+          <p class="section-label">A reaction-first layout</p>
+          <h2>Your face. Their footage. <span>One frame.</span></h2>
+          <p>
+            Cutout is a layout you can choose before recording. It removes the camera background so your reaction can sit directly over the source video.
+          </p>
+          <a class="text-link" href="features.html">
+            Explore every layout <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 05: Images/landscape_reaction.webp | Ratio: 4:3 landscape -->
+    <section class="landscape-stage" aria-labelledby="landscape-heading">
+      <div class="shell landscape-stage__inner">
+        <div class="landscape-stage__heading">
+          <p class="section-label">16:9 / Made for wide moments</p>
+          <h2 id="landscape-heading">
+            When the moment goes wide,
+            <span>your reaction goes with it.</span>
+          </h2>
+          <p>
+            Choose 16:9 before recording to keep the source video and your reaction together in one landscape-ready frame.
+          </p>
+        </div>
+
+        <figure class="product-visual product-visual--landscape">
+          <img
+            src="Images/landscape_reaction.webp"
+            alt="Reaction Creator landscape layout showing a creator reacting beside the source video"
+            width="1448"
+            height="1086"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 06: Images/editor_mode.webp | Recommended ratio: 4:3 landscape -->
+    <section class="editor-stage" id="editor">
+      <div class="shell editor-stage__inner">
+        <div class="editor-stage__heading">
+          <p class="section-label section-label--light">Optional / Editor Mode</p>
+          <h2>React first. <span>Edit only if you want.</span></h2>
+          <p>
+            Export the take as recorded, or open Editor Mode when a video needs more polish. Trim the timing, add text, adjust audio, use effects, or refine a recent recording, saved project, or export.
+          </p>
+        </div>
+
+        <figure class="product-visual product-visual--editor">
+          <img
+            src="Images/editor_mode.webp"
+            alt="Optional Reaction Creator Editor Mode with video, text, audio, and effects controls"
+            width="1448"
+            height="1086"
+            loading="lazy"
+          >
+        </figure>
+
+        <ul class="editor-tools" aria-label="Optional editing tools">
+          <li><strong>Trim</strong><span>Refine the timing</span></li>
+          <li><strong>Text</strong><span>Add context</span></li>
+          <li><strong>Audio</strong><span>Balance the sound</span></li>
+          <li><strong>Effects</strong><span>Emphasize a moment</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!--
+      IMAGE SLOT 06: Images/projects.webp | Recommended ratio: 4:3 landscape
+      IMAGE SLOT 07: Images/export_history.webp | Recommended ratio: 4:3 landscape
+    -->
+    <section class="library-stage">
+      <div class="shell">
+        <div class="stage-heading stage-heading--center">
+          <p class="section-label">Keep your momentum</p>
+          <h2>Leave when you need to. <span>Pick up where you left off.</span></h2>
+          <p>
+            Keep projects organized, return to unfinished reactions, and find completed exports without rebuilding your workflow.
+          </p>
+        </div>
+
+        <div class="library-composition">
+          <article class="library-feature library-feature--projects">
+            <div class="library-feature__copy">
+              <p class="card-label">Projects</p>
+              <h3>Create. Save. Continue.</h3>
+            </div>
+            <figure class="product-visual product-visual--library">
+              <img
+                src="Images/projects.webp"
+                alt="Reaction Creator projects screen"
+                width="1448"
+                height="1086"
+                loading="lazy"
+              >
+            </figure>
+          </article>
+
+          <article class="library-feature library-feature--exports">
+            <div class="library-feature__copy">
+              <p class="card-label">Exports</p>
+              <h3>Finished reactions, together.</h3>
+            </div>
+            <figure class="product-visual product-visual--library">
+              <img
+                src="Images/export_history.webp"
+                alt="Reaction Creator export history"
+                width="1448"
+                height="1086"
+                loading="lazy"
+              >
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles-stage">
+      <div class="shell principles-stage__grid">
+        <div class="principles-stage__heading">
+          <p class="section-label">Purpose-built</p>
+          <h2>Built around the reaction. <span>Not the timeline.</span></h2>
+        </div>
+
+        <div class="principles-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Ready-to-record layouts</h3>
+              <p>Choose 9:16, PiP, Cutout, or 16:9 before the take begins.</p>
+            </div>
+          </article>
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Direct export</h3>
+              <p>Finish and export without opening an editor when the take is already right.</p>
+            </div>
+          </article>
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Editor when needed</h3>
+              <p>Open Editor Mode only when you want to refine a recent recording, saved project, or export.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE SLOT 08: assets/img/app-logo.webp | Recommended ratio: 1:1 square -->
+    <section class="download-stage" id="download">
+      <div class="shell download-stage__panel">
+        <div class="download-stage__copy">
+          <p class="section-label section-label--light">Your next reaction starts here</p>
+          <h2>Make the reaction. <span>Skip the maze.</span></h2>
+          <p>
+            Start with the free plan and create your next reaction in one focused mobile workflow.
+          </p>
+
+          <div class="download-stage__actions">
+            <a class="button button--white" href="pricing.html#download">See plans &amp; download</a>
+            <small>Available through Google Play</small>
+          </div>
+        </div>
+
+        <figure class="app-mark">
+          <img src="assets/img/app-logo.webp" alt="Reaction Creator app icon" width="1254" height="1254" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Reaction Creator home">
+          <span class="brand__icon">
+            <img src="assets/img/favicon.png" alt="" width="512" height="512">
           </span>
+          <span class="brand__text"><strong>Reaction Creator</strong></span>
         </a>
-        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>
-          <span class="nav-toggle-lines" aria-hidden="true"></span>
-          <span class="sr-only">Menu</span>
-        </button>
-        <div class="nav-links" id="site-nav" data-nav-links>
-          <a href="index.html" data-nav="home">Home</a>
-          <a href="features.html" data-nav="features">Features</a>
-          <a href="pricing.html" data-nav="pricing">Pricing</a>
-          <a href="privacy-policy/" data-nav="privacy">Privacy</a>
-          <a href="terms.html" data-nav="terms">Terms</a>
-          <a href="support.html" data-nav="support">Support</a>
-        </div>
-      </nav>
-    </header>
+        <p>A focused mobile workflow for creating reaction videos.</p>
+      </div>
 
-    <main id="main">
-      <section class="hero">
-        <div class="wrap hero-grid">
-          <div>
-            <div class="eyebrow"><span class="eyebrow-dot"></span> Built for fast reaction workflows</div>
-            <h1>ReactionCreator</h1>
-            <p class="hero-copy">Record reactions, frame your layout, balance audio, and keep finished exports from one focused mobile editor.</p>
-            <div class="cta-row">
-              <a class="button button-primary" href="pricing.html">View plans</a>
-              <a class="button button-secondary" href="features.html">Explore features</a>
-              <a class="button button-dark" href="#download">Get it on Google Play</a>
-            </div>
-          </div>
-          <div class="hero-visual" aria-label="ReactionCreator editor preview">
-            <span class="floating-chip chip-top">Record and export</span>
-            <div class="phone-shell">
-              <div class="phone-screen">
-                <img src="assets/img/layout-9-16.png" alt="ReactionCreator 9:16 editor screen">
-              </div>
-            </div>
-            <span class="floating-chip teal chip-bottom">9:16, 16:9, PiP, Chroma</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt">
-        <div class="wrap">
-          <div class="section-header center">
-            <p class="section-kicker">Creator flow</p>
-            <h2>From source clip to share-ready reaction</h2>
-            <p>ReactionCreator keeps the core editing path close at hand: import media, record your take, tune the composition, and save the result.</p>
-          </div>
-          <div class="grid grid-3">
-            <article class="card step-card">
-              <div class="step-number">1</div>
-              <h3>Upload</h3>
-              <p>Bring in an original video and choose a live camera or uploaded reaction source.</p>
-            </article>
-            <article class="card step-card">
-              <div class="step-number yellow">2</div>
-              <h3>Record</h3>
-              <p>Use timer, auto stop, pause controls, and audio source settings to keep recording predictable.</p>
-            </article>
-            <article class="card step-card">
-              <div class="step-number">3</div>
-              <h3>Export</h3>
-              <p>Render your reaction, preview saved exports, rename files, and save finished videos.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section mode-section">
-        <div class="wrap mode-grid">
-          <div class="mode-preview" aria-label="ReactionCreator layout mode preview">
-            <img class="mode-preview-image" src="assets/img/chroma.png" alt="ReactionCreator Chroma mode screen">
-            <div class="mode-preview-label">
-              <span>Creator layouts</span>
-              <strong>9:16, 16:9, PiP, Chroma</strong>
-            </div>
-          </div>
-          <div>
-            <div class="section-header">
-              <p class="section-kicker">Layout modes</p>
-              <h2>Layouts for the way creators publish</h2>
-              <p>Choose the format that fits the platform, then frame the source clip and reaction exactly where they need to be.</p>
-            </div>
-            <div class="mode-list">
-              <div class="mode-item">
-                <span class="mode-badge">9:16</span>
-                <div>
-                  <h3>Vertical split</h3>
-                  <p>Designed for mobile-first reaction videos and short-form publishing.</p>
-                </div>
-              </div>
-              <div class="mode-item">
-                <span class="mode-badge">16:9</span>
-                <div>
-                  <h3>Landscape split</h3>
-                  <p>Side-by-side framing for wider clips and horizontal exports.</p>
-                </div>
-              </div>
-              <div class="mode-item">
-                <span class="mode-badge">PiP</span>
-                <div>
-                  <h3>Picture-in-picture</h3>
-                  <p>Keep the source video large while placing the reaction in a movable overlay.</p>
-                </div>
-              </div>
-              <div class="mode-item">
-                <span class="mode-badge">Chroma</span>
-                <div>
-                  <h3>Chroma reaction</h3>
-                  <p>Layer a keyed reaction camera over the original video for a premium creator look.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="download">
-        <div class="wrap download-panel">
-          <div>
-            <p class="section-kicker">Download</p>
-            <h2>Start creating reaction videos on Android</h2>
-            <p>Record, arrange, balance, and export creator-ready reactions from a focused mobile editor.</p>
-            <img class="store-badge" src="assets/img/google-play-badge.png" alt="Get it on Google Play">
-          </div>
-          <div class="download-logo" aria-hidden="true">
-            <img src="assets/img/app-logo.png" alt="">
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap callout">
-          <h2>Make every reaction easier to finish</h2>
-          <p>ReactionCreator keeps setup, recording, layout choices, audio controls, and exports in one mobile workflow.</p>
-          <div class="cta-row">
-            <a class="button button-primary" href="pricing.html">View plans</a>
-            <a class="button button-secondary" href="support.html">Contact support</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="wrap footer-grid">
-        <div>
-          <h2>ReactionCreator</h2>
-          <p>Mobile reaction video editing for fast creator workflows.</p>
-        </div>
-        <div>
-          <h3>Pages</h3>
-          <div class="footer-links">
-            <a href="features.html">Features</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="support.html">Contact and support</a>
-          </div>
-        </div>
-        <div>
-          <h3>Policies</h3>
-          <div class="footer-links">
-            <a href="privacy-policy/">Privacy Policy</a><a href="account-deletion/">Account Deletion</a>
-            <a href="terms.html">Terms</a>
-          </div>
+      <div>
+        <h3>Product</h3>
+        <div class="footer-links">
+          <a href="features.html">Features</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="https://play.google.com/store/apps/details?id=com.reaction.reactioncreator">Download</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div class="wrap">&copy; <span data-year></span> ReactionCreator. All rights reserved.</div>
+
+      <div>
+        <h3>Support</h3>
+        <div class="footer-links">
+          <a href="support.html">Help &amp; support</a>
+          <a href="account-deletion/">Account deletion</a>
+        </div>
       </div>
-    </footer>
-    <script src="assets/js/main.js"></script>
-  </body>
+
+      <div>
+        <h3>Legal</h3>
+        <div class="footer-links">
+          <a href="privacy-policy/">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="shell">&copy; <span data-year></span> Reaction Creator. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/home-v2.js?v=20260825"></script>
+</body>
 </html>
