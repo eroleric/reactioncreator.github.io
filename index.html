@@ -12,6 +12,12 @@
     content="Choose a layout, add a source video, record your reaction, and export. Edit only when you want to."
   >
   <link rel="canonical" href="https://www.reactioncreator.com/">
+  <script>
+    if (window.location.pathname.endsWith("/index.html")) {
+      const cleanPath = window.location.pathname.slice(0, -"index.html".length) || "/";
+      window.history.replaceState(null, "", cleanPath + window.location.search + window.location.hash);
+    }
+  </script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Reaction Creator">
   <meta property="og:title" content="Reaction Creator - Make Reaction Videos Faster">
@@ -32,7 +38,7 @@
 
   <header class="site-header">
     <nav class="nav shell" aria-label="Main navigation">
-      <a class="brand" href="index.html" aria-label="Reaction Creator home">
+      <a class="brand" href="/" aria-label="Reaction Creator home">
         <span class="brand__icon">
           <img src="assets/img/favicon.png" alt="" width="512" height="512">
         </span>
@@ -393,7 +399,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html" aria-label="Reaction Creator home">
+        <a class="brand" href="/" aria-label="Reaction Creator home">
           <span class="brand__icon">
             <img src="assets/img/favicon.png" alt="" width="512" height="512">
           </span>
