@@ -2247,41 +2247,6 @@ a {
   font-size: 21px;
 }
 
-.layout-copy {
-  min-height: 144px;
-  max-width: 520px;
-  margin-top: 22px;
-  padding: 21px 22px 19px;
-  border: 1px solid rgba(84, 33, 196, 0.11);
-  border-radius: 22px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.46));
-  box-shadow: 0 18px 48px rgba(62, 35, 126, 0.08);
-}
-
-.layout-copy__eyebrow {
-  margin: 0 0 5px;
-  color: var(--purple-deep);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.layout-copy h3 {
-  margin: 0 0 7px;
-  color: var(--ink);
-  font-size: 29px;
-  line-height: 1.05;
-}
-
-.layout-copy > p:last-child {
-  margin: 0;
-  color: #554d69;
-  font-size: 15px;
-  font-weight: 520;
-  line-height: 1.52;
-}
-
 .layout-showcase__hint {
   display: flex;
   align-items: center;
@@ -2818,8 +2783,7 @@ a {
 
   .layout-showcase__copy h2,
   .layout-showcase__intro,
-  .layout-tabs,
-  .layout-copy {
+  .layout-tabs {
     margin-inline: auto;
   }
 
@@ -2895,27 +2859,6 @@ a {
 
   .layout-tab .material-symbols-rounded {
     font-size: 19px;
-  }
-
-  .layout-copy {
-    min-height: 0;
-    margin-top: 12px;
-    padding: 12px 15px 13px;
-    border-radius: 16px;
-  }
-
-  .layout-copy__eyebrow {
-    display: none;
-  }
-
-  .layout-copy h3 {
-    margin-bottom: 3px;
-    font-size: 21px;
-  }
-
-  .layout-copy > p:last-child {
-    font-size: 12.5px;
-    line-height: 1.35;
   }
 
   .layout-showcase__hint {
