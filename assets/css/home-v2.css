@@ -2394,13 +2394,12 @@ a {
 
 .app-demo--916 .app-demo__creator-pane img {
   position: absolute;
-  left: 50%;
-  top: 5%;
-  bottom: auto;
-  width: 60%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 12px 20px rgba(25, 10, 43, 0.24));
+  object-fit: cover;
+  object-position: center 42%;
 }
 
 .app-demo--916 .app-demo__source {
@@ -2429,28 +2428,71 @@ a {
 
 .app-demo__pip-window img {
   position: absolute;
-  left: 50%;
-  bottom: -8%;
-  width: 114%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: center 25%;
 }
 
 .app-demo__cutout-person {
   position: absolute;
   z-index: 4;
-  left: -4%;
-  bottom: -1%;
-  width: 82%;
+  left: -7%;
+  bottom: -40%;
+  width: 112%;
   max-width: none;
   filter: drop-shadow(0 18px 24px rgba(25, 10, 43, 0.31));
+}
+
+.phone-shell--landscape {
+  position: relative;
+  width: 100%;
+  padding: 10px 24px 10px 15px;
+  border: 1px solid rgba(59, 48, 82, 0.2);
+  border-radius: 46px;
+  background: linear-gradient(145deg, #ffffff 0%, #f3f1f9 52%, #d8d3e2 100%);
+  box-shadow:
+    0 30px 74px rgba(43, 23, 91, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(61, 50, 79, 0.12);
+  isolation: isolate;
+}
+
+.phone-shell--landscape::before {
+  content: "";
+  position: absolute;
+  z-index: 8;
+  right: 7px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3f3b48;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.48);
+  transform: translateY(-50%);
+}
+
+.phone-shell--landscape::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -4px;
+  left: 28%;
+  width: 76px;
+  height: 4px;
+  border-radius: 5px 5px 1px 1px;
+  background: #b8b2c4;
+  box-shadow: 96px 0 0 #b8b2c4;
 }
 
 .app-demo--landscape {
   width: 100%;
   aspect-ratio: 1352 / 720;
-  border: 5px solid rgba(255, 255, 255, 0.96);
-  border-radius: 34px;
+  border: 2px solid rgba(30, 27, 37, 0.82);
+  border-radius: 31px;
+  box-shadow: none;
 }
 
 .app-demo__wide-creator,
@@ -2529,7 +2571,7 @@ a {
   min-height: 580px;
 }
 
-.layout-panel--wide .app-demo--landscape {
+.layout-panel--wide .phone-shell--landscape {
   width: min(100%, 760px);
 }
 
@@ -2885,7 +2927,7 @@ a {
     min-height: 0;
   }
 
-  .layout-panel--wide .app-demo--landscape {
+  .layout-panel--wide .phone-shell--landscape {
     width: 100%;
   }
 
@@ -2893,9 +2935,27 @@ a {
     padding: 14px 4px;
   }
 
+  .phone-shell--landscape {
+    padding: 6px 14px 6px 9px;
+    border-radius: 28px;
+  }
+
+  .phone-shell--landscape::before {
+    right: 4px;
+    width: 3px;
+    height: 3px;
+  }
+
+  .phone-shell--landscape::after {
+    top: -3px;
+    width: 42px;
+    height: 3px;
+    box-shadow: 54px 0 0 #b8b2c4;
+  }
+
   .app-demo--landscape {
-    border-width: 3px;
-    border-radius: 18px;
+    border-width: 1px;
+    border-radius: 21px;
   }
 
   .workflow-rail button {
