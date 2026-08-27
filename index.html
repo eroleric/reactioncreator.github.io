@@ -36,7 +36,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0"
   >
-  <link rel="stylesheet" href="assets/css/home-v2.css">
+  <link rel="stylesheet" href="assets/css/home-v2.css?v=20260827c">
 </head>
 
 <body>
@@ -164,29 +164,170 @@
       </div>
     </section>
 
-    <!-- IMAGE SLOT 02: Images/choose_layout.webp | Recommended ratio: 4:3 landscape -->
     <section class="layout-stage" id="features">
-      <div class="shell stage-shell">
+      <div class="shell stage-shell layout-showcase">
         <span class="stage-number" aria-hidden="true">01</span>
-        <div class="stage-heading stage-heading--split">
-          <div>
-            <p class="section-label">Choose the frame</p>
-            <h2>Choose <span>your layout.</span></h2>
+        <div class="layout-showcase__copy">
+          <p class="section-label">Choose the frame</p>
+          <h2>One reaction. <span>Four ways to frame it.</span></h2>
+          <p class="layout-showcase__intro">
+            Keep the same source and creator. Change only the way the moment is framed.
+          </p>
+
+          <div class="layout-tabs" role="tablist" aria-label="Choose a reaction layout">
+            <button
+              class="layout-tab is-active"
+              id="layout-tab-916"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="layout-panel-916"
+              data-layout-tab="916"
+            >
+              <span class="material-symbols-rounded" aria-hidden="true">smartphone</span>
+              <span>9:16</span>
+            </button>
+            <button
+              class="layout-tab"
+              id="layout-tab-pip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="layout-panel-pip"
+              data-layout-tab="pip"
+              tabindex="-1"
+            >
+              <span class="material-symbols-rounded" aria-hidden="true">picture_in_picture</span>
+              <span>PiP</span>
+            </button>
+            <button
+              class="layout-tab"
+              id="layout-tab-cutout"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="layout-panel-cutout"
+              data-layout-tab="cutout"
+              tabindex="-1"
+            >
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              <span>Cutout</span>
+            </button>
+            <button
+              class="layout-tab"
+              id="layout-tab-169"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="layout-panel-169"
+              data-layout-tab="169"
+              tabindex="-1"
+            >
+              <span class="material-symbols-rounded" aria-hidden="true">crop_landscape</span>
+              <span>16:9</span>
+            </button>
           </div>
-          <p>
-            Start with the format your audience will see: 9:16, PiP, Cutout, or 16:9.
+
+          <div class="layout-copy" aria-live="polite" aria-atomic="true">
+            <p class="layout-copy__eyebrow" data-layout-kicker>9:16 layout</p>
+            <h3 data-layout-title>Vertical, ready to post.</h3>
+            <p data-layout-description>Built for Shorts, Reels, and TikTok.</p>
+          </div>
+
+          <p class="layout-showcase__hint">
+            <span class="material-symbols-rounded" aria-hidden="true">swipe</span>
+            Tap a format to see the real app layout.
           </p>
         </div>
 
-        <figure class="product-visual product-visual--cinema">
-          <img
-            src="Images/choose_layout.webp"
-            alt="Reaction Creator showing 9:16, picture-in-picture, Cutout, and 16:9 layouts"
-            width="1448"
-            height="1086"
-            loading="lazy"
+        <div class="layout-viewport" data-layout-viewport>
+          <figure
+            class="layout-panel is-active"
+            id="layout-panel-916"
+            role="tabpanel"
+            aria-labelledby="layout-tab-916"
+            data-layout-panel="916"
           >
-        </figure>
+            <div class="app-demo app-demo--portrait app-demo--916">
+              <img class="app-demo__ui" src="Images/layout-916-ui.webp" alt="" width="917" height="2048">
+              <div class="app-demo__media" aria-hidden="true">
+                <div class="app-demo__creator-pane">
+                  <img src="Images/layout-creator-v2.webp" alt="">
+                </div>
+                <img class="app-demo__source" src="Images/layout-source-v2.webp" alt="">
+                <img class="app-demo__record-pill" src="Images/layout-record-pill.webp" alt="">
+              </div>
+            </div>
+            <figcaption class="screen-reader-only">A real Reaction Creator 9:16 interface with the creator above the motocross source video.</figcaption>
+          </figure>
+
+          <figure
+            class="layout-panel"
+            id="layout-panel-pip"
+            role="tabpanel"
+            aria-labelledby="layout-tab-pip"
+            data-layout-panel="pip"
+            hidden
+          >
+            <div class="app-demo app-demo--portrait app-demo--pip">
+              <img class="app-demo__ui" src="Images/layout-pip-ui.webp" alt="" width="917" height="2048">
+              <div class="app-demo__media" aria-hidden="true">
+                <img class="app-demo__source" src="Images/layout-source-v2.webp" alt="">
+                <div class="app-demo__pip-window">
+                  <img src="Images/layout-creator-v2.webp" alt="">
+                </div>
+                <img class="app-demo__record-pill" src="Images/layout-record-pill.webp" alt="">
+              </div>
+            </div>
+            <figcaption class="screen-reader-only">A real Reaction Creator picture-in-picture interface with the creator over the motocross source video.</figcaption>
+          </figure>
+
+          <figure
+            class="layout-panel"
+            id="layout-panel-cutout"
+            role="tabpanel"
+            aria-labelledby="layout-tab-cutout"
+            data-layout-panel="cutout"
+            hidden
+          >
+            <div class="app-demo app-demo--portrait app-demo--cutout">
+              <img class="app-demo__ui" src="Images/layout-cutout-ui.webp" alt="" width="917" height="2048">
+              <div class="app-demo__media" aria-hidden="true">
+                <img class="app-demo__source" src="Images/layout-source-v2.webp" alt="">
+                <img class="app-demo__cutout-person" src="Images/layout-creator-v2.webp" alt="">
+                <img class="app-demo__record-pill" src="Images/layout-record-pill.webp" alt="">
+              </div>
+            </div>
+            <figcaption class="screen-reader-only">A real Reaction Creator Cutout interface with the creator placed directly over the motocross source video.</figcaption>
+          </figure>
+
+          <figure
+            class="layout-panel layout-panel--wide"
+            id="layout-panel-169"
+            role="tabpanel"
+            aria-labelledby="layout-tab-169"
+            data-layout-panel="169"
+            hidden
+          >
+            <div class="app-demo app-demo--landscape">
+              <img class="app-demo__ui" src="Images/layout-169-ui.webp" alt="" width="1600" height="720">
+              <div class="app-demo__wide-creator" aria-hidden="true">
+                <img src="Images/layout-creator-v2.webp" alt="">
+              </div>
+              <img class="app-demo__wide-source" src="Images/layout-source-v2.webp" alt="" aria-hidden="true">
+              <img class="app-demo__wide-record" src="Images/layout-record-pill.webp" alt="" aria-hidden="true">
+              <div class="app-demo__wide-toolbar" aria-hidden="true">
+                <img src="Images/layout-toolbar-adjust.webp" alt="">
+                <img src="Images/layout-toolbar-swap.webp" alt="">
+                <img src="Images/layout-toolbar-upload.webp" alt="">
+                <img src="Images/layout-toolbar-setup.webp" alt="">
+                <img src="Images/layout-toolbar-mirror.webp" alt="">
+              </div>
+              <img class="app-demo__wide-status" src="Images/layout-status-100.webp" alt="" aria-hidden="true">
+            </div>
+            <figcaption class="screen-reader-only">A real Reaction Creator 16:9 landscape interface with the creator and motocross source video side by side, using the current toolbar.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -223,28 +364,42 @@
           If the take feels right, export it immediately. Editing is optional.
         </p>
 
-        <ol class="workflow-rail" aria-label="Core reaction workflow">
+        <ol class="workflow-rail" aria-label="Explore the core reaction workflow">
           <li>
-            <small>01</small>
-            <span class="material-symbols-rounded" aria-hidden="true">dashboard_customize</span>
-            <strong>Layout</strong>
+            <button type="button" data-export-step="layout" aria-pressed="false">
+              <small>01</small>
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard_customize</span>
+              <strong>Layout</strong>
+            </button>
           </li>
           <li>
-            <small>02</small>
-            <span class="material-symbols-rounded" aria-hidden="true">video_library</span>
-            <strong>Source</strong>
+            <button type="button" data-export-step="source" aria-pressed="false">
+              <small>02</small>
+              <span class="material-symbols-rounded" aria-hidden="true">video_library</span>
+              <strong>Source</strong>
+            </button>
           </li>
           <li>
-            <small>03</small>
-            <span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>
-            <strong>Record</strong>
+            <button type="button" data-export-step="record" aria-pressed="false">
+              <small>03</small>
+              <span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>
+              <strong>Record</strong>
+            </button>
           </li>
-          <li class="workflow-rail__finish">
-            <small>04</small>
-            <span class="material-symbols-rounded" aria-hidden="true">upload</span>
-            <strong>Export</strong>
+          <li>
+            <button class="is-active" type="button" data-export-step="export" aria-pressed="true">
+              <small>04</small>
+              <span class="material-symbols-rounded" aria-hidden="true">upload</span>
+              <strong>Export</strong>
+            </button>
           </li>
         </ol>
+
+        <div class="export-detail" aria-live="polite" aria-atomic="true">
+          <p class="export-detail__step" data-export-step-label>04 · Export</p>
+          <h3 data-export-title>Send it out—no timeline required.</h3>
+          <p data-export-description>When the reaction feels right, export immediately. Editor Mode waits only if you need it.</p>
+        </div>
       </div>
     </section>
 
@@ -274,28 +429,39 @@
       </div>
     </section>
 
-    <!-- IMAGE SLOT 05: Images/landscape_reaction.webp | Ratio: 4:3 landscape -->
     <section class="landscape-stage" aria-labelledby="landscape-heading">
-      <div class="shell landscape-stage__inner">
-        <div class="landscape-stage__heading">
-          <p class="section-label">16:9 layout</p>
-          <h2 id="landscape-heading">
-            Go wide. <span>Stay in frame.</span>
-          </h2>
-          <p>
-            Keep the source video and your reaction together in one landscape-ready frame.
-          </p>
-        </div>
+      <div class="shell">
+        <div class="landscape-showcase">
+          <div class="landscape-showcase__copy">
+            <p class="section-label">16:9 layout</p>
+            <h2 id="landscape-heading">Turn the phone. <span>Own the wide screen.</span></h2>
+            <p>Creator and source stay together in one YouTube-ready frame.</p>
+            <span class="landscape-showcase__badge">
+              <span class="material-symbols-rounded" aria-hidden="true">screen_rotation_alt</span>
+              Landscape ready
+            </span>
+          </div>
 
-        <figure class="product-visual product-visual--landscape">
-          <img
-            src="Images/landscape_reaction.webp"
-            alt="Reaction Creator landscape layout showing a creator reacting beside the source video"
-            width="1448"
-            height="1086"
-            loading="lazy"
-          >
-        </figure>
+          <figure class="landscape-showcase__visual">
+            <div class="app-demo app-demo--landscape">
+              <img class="app-demo__ui" src="Images/layout-169-ui.webp" alt="" width="1600" height="720" loading="lazy">
+              <div class="app-demo__wide-creator" aria-hidden="true">
+                <img src="Images/layout-creator-v2.webp" alt="">
+              </div>
+              <img class="app-demo__wide-source" src="Images/layout-source-v2.webp" alt="" aria-hidden="true">
+              <img class="app-demo__wide-record" src="Images/layout-record-pill.webp" alt="" aria-hidden="true">
+              <div class="app-demo__wide-toolbar" aria-hidden="true">
+                <img src="Images/layout-toolbar-adjust.webp" alt="">
+                <img src="Images/layout-toolbar-swap.webp" alt="">
+                <img src="Images/layout-toolbar-upload.webp" alt="">
+                <img src="Images/layout-toolbar-setup.webp" alt="">
+                <img src="Images/layout-toolbar-mirror.webp" alt="">
+              </div>
+              <img class="app-demo__wide-status" src="Images/layout-status-100.webp" alt="" aria-hidden="true">
+            </div>
+            <figcaption class="screen-reader-only">Reaction Creator running in landscape with the current recording control, current toolbar, and a full battery indicator.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -323,19 +489,19 @@
         <ul class="editor-tools" aria-label="Optional editing tools">
           <li>
             <span class="material-symbols-rounded editor-tools__icon" aria-hidden="true">content_cut</span>
-            <strong>Trim</strong><span>Refine the timing</span>
+            <strong>Trim</strong><span class="screen-reader-only">Refine the timing</span>
           </li>
           <li>
             <span class="material-symbols-rounded editor-tools__icon" aria-hidden="true">title</span>
-            <strong>Text</strong><span>Add context</span>
+            <strong>Text</strong><span class="screen-reader-only">Add context</span>
           </li>
           <li>
             <span class="material-symbols-rounded editor-tools__icon" aria-hidden="true">volume_up</span>
-            <strong>Audio</strong><span>Balance the sound</span>
+            <strong>Audio</strong><span class="screen-reader-only">Balance the sound</span>
           </li>
           <li>
             <span class="material-symbols-rounded editor-tools__icon" aria-hidden="true">auto_awesome</span>
-            <strong>Effects</strong><span>Emphasize a moment</span>
+            <strong>Effects</strong><span class="screen-reader-only">Emphasize a moment</span>
           </li>
         </ul>
       </div>
@@ -459,6 +625,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/home-v2.js?v=20260825"></script>
+  <script src="assets/js/home-v2.js?v=20260827c"></script>
 </body>
 </html>
