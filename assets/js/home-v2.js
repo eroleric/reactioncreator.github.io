@@ -36,9 +36,6 @@ document.querySelectorAll("[data-year]").forEach((element) => {
 const layoutTabs = Array.from(document.querySelectorAll("[data-layout-tab]"));
 const layoutPanels = Array.from(document.querySelectorAll("[data-layout-panel]"));
 const layoutViewport = document.querySelector("[data-layout-viewport]");
-const layoutKicker = document.querySelector("[data-layout-kicker]");
-const layoutTitle = document.querySelector("[data-layout-title]");
-const layoutDescription = document.querySelector("[data-layout-description]");
 const layoutMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const layoutStage = document.querySelector(".layout-stage");
 const layoutAutoDelay = 4000;
@@ -58,35 +55,11 @@ const scheduleLayoutRotation = (delay = layoutAutoDelay) => {
   }, delay);
 };
 
-const layoutContent = {
-  916: {
-    kicker: "9:16 layout",
-    title: "Vertical, ready to post.",
-    description: "Built for Shorts, Reels, and TikTok."
-  },
-  pip: {
-    kicker: "Picture-in-picture",
-    title: "Keep both in view.",
-    description: "Your camera stays visible without covering the moment."
-  },
-  cutout: {
-    kicker: "Cutout layout",
-    title: "React inside the action.",
-    description: "Your background disappears. Your reaction stays."
-  },
-  169: {
-    kicker: "16:9 layout",
-    title: "Wide-screen, ready.",
-    description: "Creator and source share one landscape frame."
-  }
-};
-
 const activateLayout = (key, moveFocus = false) => {
   const activeTab = layoutTabs.find((tab) => tab.dataset.layoutTab === key);
   const activePanel = layoutPanels.find((panel) => panel.dataset.layoutPanel === key);
-  const content = layoutContent[key];
 
-  if (!activeTab || !activePanel || !content) return;
+  if (!activeTab || !activePanel) return;
 
   layoutTabs.forEach((tab) => {
     const isActive = tab === activeTab;
@@ -105,9 +78,6 @@ const activateLayout = (key, moveFocus = false) => {
   activePanel.classList.add("is-entering");
   window.setTimeout(() => activePanel.classList.remove("is-entering"), 360);
 
-  if (layoutKicker) layoutKicker.textContent = content.kicker;
-  if (layoutTitle) layoutTitle.textContent = content.title;
-  if (layoutDescription) layoutDescription.textContent = content.description;
   if (layoutViewport) layoutViewport.classList.toggle("is-wide", key === "169");
   if (moveFocus) activeTab.focus();
 };
