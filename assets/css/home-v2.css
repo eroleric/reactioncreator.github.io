@@ -2430,8 +2430,9 @@ a {
 .app-demo--916 .app-demo__creator-pane img {
   position: absolute;
   left: 50%;
-  bottom: -64%;
-  width: 76%;
+  top: 5%;
+  bottom: auto;
+  width: 60%;
   max-width: none;
   transform: translateX(-50%);
   filter: drop-shadow(0 12px 20px rgba(25, 10, 43, 0.24));
@@ -2464,8 +2465,8 @@ a {
 .app-demo__pip-window img {
   position: absolute;
   left: 50%;
-  bottom: -13%;
-  width: 135%;
+  bottom: -8%;
+  width: 114%;
   max-width: none;
   transform: translateX(-50%);
 }
@@ -2473,16 +2474,16 @@ a {
 .app-demo__cutout-person {
   position: absolute;
   z-index: 4;
-  left: -3%;
-  bottom: -2%;
-  width: 68%;
+  left: -4%;
+  bottom: -1%;
+  width: 82%;
   max-width: none;
   filter: drop-shadow(0 18px 24px rgba(25, 10, 43, 0.31));
 }
 
 .app-demo--landscape {
   width: 100%;
-  aspect-ratio: 1600 / 720;
+  aspect-ratio: 1352 / 720;
   border: 5px solid rgba(255, 255, 255, 0.96);
   border-radius: 34px;
 }
@@ -2497,9 +2498,9 @@ a {
 }
 
 .app-demo__wide-creator {
-  left: 10%;
+  left: 0;
   top: 0;
-  width: 40%;
+  width: 47.34%;
   height: 73.45%;
   overflow: hidden;
   background: linear-gradient(145deg, #321544, #74415f);
@@ -2508,34 +2509,34 @@ a {
 .app-demo__wide-creator img {
   position: absolute;
   left: 50%;
-  bottom: -45%;
-  width: 93%;
+  bottom: -31%;
+  width: 88%;
   max-width: none;
   transform: translateX(-50%);
 }
 
 .app-demo__wide-source {
-  left: 50%;
+  left: 47.34%;
   top: 0;
-  width: 44.5%;
+  width: 52.66%;
   height: 73.45%;
   object-fit: cover;
 }
 
 .app-demo__wide-record {
   z-index: 6;
-  left: 11.3%;
+  left: 1.5%;
   top: 2.7%;
-  width: 17.8%;
+  width: 21%;
   height: auto;
   border-radius: 999px;
 }
 
 .app-demo__wide-toolbar {
   z-index: 5;
-  left: 10%;
+  left: 0;
   top: 73.35%;
-  width: 84.5%;
+  width: 100%;
   height: 26.65%;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -2552,9 +2553,9 @@ a {
 
 .app-demo__wide-status {
   z-index: 7;
-  right: 7.8%;
+  right: 2.8%;
   top: 1.1%;
-  width: 14.8%;
+  width: 14%;
   height: auto;
   border-radius: 4px;
 }

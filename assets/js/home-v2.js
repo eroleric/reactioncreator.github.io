@@ -39,6 +39,24 @@ const layoutViewport = document.querySelector("[data-layout-viewport]");
 const layoutKicker = document.querySelector("[data-layout-kicker]");
 const layoutTitle = document.querySelector("[data-layout-title]");
 const layoutDescription = document.querySelector("[data-layout-description]");
+const layoutMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+const layoutStage = document.querySelector(".layout-stage");
+const layoutAutoDelay = 4000;
+const layoutManualDelay = 10000;
+let layoutRotationTimer = null;
+let layoutIsVisible = !("IntersectionObserver" in window);
+
+const scheduleLayoutRotation = (delay = layoutAutoDelay) => {
+  window.clearTimeout(layoutRotationTimer);
+  if (layoutMotionPreference.matches || document.hidden || !layoutIsVisible || layoutTabs.length < 2) return;
+
+  layoutRotationTimer = window.setTimeout(() => {
+    const currentIndex = Math.max(0, layoutTabs.findIndex((tab) => tab.classList.contains("is-active")));
+    const nextIndex = (currentIndex + 1) % layoutTabs.length;
+    activateLayout(layoutTabs[nextIndex].dataset.layoutTab);
+    scheduleLayoutRotation(layoutAutoDelay);
+  }, delay);
+};
 
 const layoutContent = {
   916: {
@@ -95,7 +113,10 @@ const activateLayout = (key, moveFocus = false) => {
 };
 
 layoutTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => activateLayout(tab.dataset.layoutTab));
+  tab.addEventListener("click", () => {
+    activateLayout(tab.dataset.layoutTab);
+    scheduleLayoutRotation(layoutManualDelay);
+  });
 
   tab.addEventListener("keydown", (event) => {
     let nextIndex = index;
@@ -108,6 +129,7 @@ layoutTabs.forEach((tab, index) => {
     if (nextIndex !== index) {
       event.preventDefault();
       activateLayout(layoutTabs[nextIndex].dataset.layoutTab, true);
+      scheduleLayoutRotation(layoutManualDelay);
     }
   });
 });
@@ -133,12 +155,37 @@ if (layoutViewport && layoutTabs.length > 1) {
     const direction = deltaX < 0 ? 1 : -1;
     const nextIndex = (currentIndex + direction + layoutTabs.length) % layoutTabs.length;
     activateLayout(layoutTabs[nextIndex].dataset.layoutTab);
+    scheduleLayoutRotation(layoutManualDelay);
   });
 
   layoutViewport.addEventListener("pointercancel", () => {
     pointerStart = null;
   });
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    window.clearTimeout(layoutRotationTimer);
+  } else {
+    scheduleLayoutRotation(layoutAutoDelay);
+  }
+});
+
+if ("IntersectionObserver" in window && layoutStage) {
+  const layoutObserver = new IntersectionObserver((entries) => {
+    layoutIsVisible = entries.some((entry) => entry.isIntersecting);
+    if (layoutIsVisible) {
+      scheduleLayoutRotation(layoutAutoDelay);
+    } else {
+      window.clearTimeout(layoutRotationTimer);
+    }
+  }, { threshold: 0.2 });
+
+  layoutObserver.observe(layoutStage);
+}
+
+layoutMotionPreference.addEventListener("change", () => scheduleLayoutRotation(layoutAutoDelay));
+scheduleLayoutRotation(layoutAutoDelay);
 
 const exportButtons = Array.from(document.querySelectorAll("[data-export-step]"));
 const exportStepLabel = document.querySelector("[data-export-step-label]");
