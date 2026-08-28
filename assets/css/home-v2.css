@@ -1366,6 +1366,26 @@ a {
   gap: 18px;
 }
 
+.download-stage__actions .google-play-badge-link {
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 16px 34px rgba(20, 8, 53, 0.24);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.download-stage__actions .google-play-badge-link:hover,
+.download-stage__actions .google-play-badge-link:focus-visible {
+  box-shadow: 0 20px 42px rgba(20, 8, 53, 0.34);
+  transform: translateY(-2px);
+}
+
+.download-stage__actions .google-play-badge-link img {
+  display: block;
+  width: 194px;
+  height: auto;
+}
+
 .download-stage__actions small {
   color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
