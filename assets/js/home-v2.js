@@ -35,13 +35,22 @@ document.querySelectorAll("[data-year]").forEach((element) => {
 
 const layoutTabs = Array.from(document.querySelectorAll("[data-layout-tab]"));
 const layoutPanels = Array.from(document.querySelectorAll("[data-layout-panel]"));
+const layoutTabsContainer = document.querySelector(".layout-tabs");
 const layoutViewport = document.querySelector("[data-layout-viewport]");
 const layoutMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const layoutStage = document.querySelector(".layout-stage");
 const layoutAutoDelay = 4000;
 const layoutManualDelay = 10000;
+const layoutTransitionDuration = 640;
 let layoutRotationTimer = null;
+let layoutTransitionTimer = null;
 let layoutIsVisible = !("IntersectionObserver" in window);
+
+const updateLayoutGlider = (tab) => {
+  if (!layoutTabsContainer || !tab) return;
+  layoutTabsContainer.style.setProperty("--layout-glider-x", `${tab.offsetLeft}px`);
+  layoutTabsContainer.style.setProperty("--layout-glider-width", `${tab.offsetWidth}px`);
+};
 
 const scheduleLayoutRotation = (delay = layoutAutoDelay) => {
   window.clearTimeout(layoutRotationTimer);
@@ -50,16 +59,24 @@ const scheduleLayoutRotation = (delay = layoutAutoDelay) => {
   layoutRotationTimer = window.setTimeout(() => {
     const currentIndex = Math.max(0, layoutTabs.findIndex((tab) => tab.classList.contains("is-active")));
     const nextIndex = (currentIndex + 1) % layoutTabs.length;
-    activateLayout(layoutTabs[nextIndex].dataset.layoutTab);
+    activateLayout(layoutTabs[nextIndex].dataset.layoutTab, false, 1);
     scheduleLayoutRotation(layoutAutoDelay);
   }, delay);
 };
 
-const activateLayout = (key, moveFocus = false) => {
+const activateLayout = (key, moveFocus = false, direction = 0) => {
   const activeTab = layoutTabs.find((tab) => tab.dataset.layoutTab === key);
   const activePanel = layoutPanels.find((panel) => panel.dataset.layoutPanel === key);
+  const previousTab = layoutTabs.find((tab) => tab.classList.contains("is-active"));
+  const previousPanel = layoutPanels.find((panel) => panel.classList.contains("is-active"));
 
   if (!activeTab || !activePanel) return;
+
+  const previousIndex = Math.max(0, layoutTabs.indexOf(previousTab));
+  const nextIndex = layoutTabs.indexOf(activeTab);
+  const resolvedDirection = direction || (nextIndex >= previousIndex ? 1 : -1);
+
+  window.clearTimeout(layoutTransitionTimer);
 
   layoutTabs.forEach((tab) => {
     const isActive = tab === activeTab;
@@ -68,15 +85,40 @@ const activateLayout = (key, moveFocus = false) => {
     tab.tabIndex = isActive ? 0 : -1;
   });
 
+  updateLayoutGlider(activeTab);
+
   layoutPanels.forEach((panel) => {
-    const isActive = panel === activePanel;
-    panel.hidden = !isActive;
-    panel.classList.toggle("is-active", isActive);
-    panel.classList.remove("is-entering");
+    panel.classList.remove(
+      "is-entering-next",
+      "is-entering-previous",
+      "is-leaving-next",
+      "is-leaving-previous"
+    );
   });
 
-  activePanel.classList.add("is-entering");
-  window.setTimeout(() => activePanel.classList.remove("is-entering"), 360);
+  if (!previousPanel || previousPanel === activePanel || layoutMotionPreference.matches) {
+    layoutPanels.forEach((panel) => {
+      const isActive = panel === activePanel;
+      panel.hidden = !isActive;
+      panel.classList.toggle("is-active", isActive);
+    });
+  } else {
+    layoutPanels.forEach((panel) => {
+      panel.hidden = panel !== previousPanel && panel !== activePanel;
+      panel.classList.toggle("is-active", panel === activePanel);
+    });
+
+    previousPanel.classList.add(resolvedDirection > 0 ? "is-leaving-next" : "is-leaving-previous");
+    activePanel.classList.add(resolvedDirection > 0 ? "is-entering-next" : "is-entering-previous");
+    layoutViewport?.classList.add("is-switching");
+
+    layoutTransitionTimer = window.setTimeout(() => {
+      previousPanel.hidden = true;
+      previousPanel.classList.remove("is-leaving-next", "is-leaving-previous");
+      activePanel.classList.remove("is-entering-next", "is-entering-previous");
+      layoutViewport?.classList.remove("is-switching");
+    }, layoutTransitionDuration);
+  }
 
   if (layoutViewport) layoutViewport.classList.toggle("is-wide", key === "169");
   if (moveFocus) activeTab.focus();
@@ -84,7 +126,8 @@ const activateLayout = (key, moveFocus = false) => {
 
 layoutTabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
-    activateLayout(tab.dataset.layoutTab);
+    const currentIndex = Math.max(0, layoutTabs.findIndex((item) => item.classList.contains("is-active")));
+    activateLayout(tab.dataset.layoutTab, false, index >= currentIndex ? 1 : -1);
     scheduleLayoutRotation(layoutManualDelay);
   });
 
@@ -98,7 +141,8 @@ layoutTabs.forEach((tab, index) => {
 
     if (nextIndex !== index) {
       event.preventDefault();
-      activateLayout(layoutTabs[nextIndex].dataset.layoutTab, true);
+      const direction = event.key === "ArrowLeft" || event.key === "Home" ? -1 : 1;
+      activateLayout(layoutTabs[nextIndex].dataset.layoutTab, true, direction);
       scheduleLayoutRotation(layoutManualDelay);
     }
   });
@@ -106,32 +150,86 @@ layoutTabs.forEach((tab, index) => {
 
 if (layoutViewport && layoutTabs.length > 1) {
   let pointerStart = null;
+  let pointerAxis = null;
+
+  const resetDragState = () => {
+    pointerStart = null;
+    pointerAxis = null;
+    layoutViewport.style.setProperty("--layout-drag-x", "0px");
+    layoutViewport.style.setProperty("--layout-drag-rotate", "0deg");
+  };
 
   layoutViewport.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "mouse") return;
-    pointerStart = { x: event.clientX, y: event.clientY };
+    if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+    pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    pointerAxis = null;
+    layoutViewport.classList.add("is-dragging");
+    layoutViewport.setPointerCapture?.(event.pointerId);
   });
 
-  layoutViewport.addEventListener("pointerup", (event) => {
-    if (!pointerStart || event.pointerType === "mouse") return;
+  layoutViewport.addEventListener("pointermove", (event) => {
+    if (!pointerStart || event.pointerId !== pointerStart.id) return;
 
     const deltaX = event.clientX - pointerStart.x;
     const deltaY = event.clientY - pointerStart.y;
-    pointerStart = null;
 
-    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    if (!pointerAxis && Math.max(Math.abs(deltaX), Math.abs(deltaY)) > 7) {
+      pointerAxis = Math.abs(deltaX) > Math.abs(deltaY) ? "horizontal" : "vertical";
+    }
 
-    const currentIndex = Math.max(0, layoutTabs.findIndex((tab) => tab.classList.contains("is-active")));
-    const direction = deltaX < 0 ? 1 : -1;
-    const nextIndex = (currentIndex + direction + layoutTabs.length) % layoutTabs.length;
-    activateLayout(layoutTabs[nextIndex].dataset.layoutTab);
-    scheduleLayoutRotation(layoutManualDelay);
+    if (pointerAxis !== "horizontal") return;
+
+    event.preventDefault();
+    const dragLimit = layoutViewport.clientWidth * 0.34;
+    const resistedX = Math.max(-dragLimit, Math.min(dragLimit, deltaX * 0.86));
+    layoutViewport.style.setProperty("--layout-drag-x", `${resistedX}px`);
+    layoutViewport.style.setProperty("--layout-drag-rotate", `${resistedX / layoutViewport.clientWidth * 3.2}deg`);
   });
 
-  layoutViewport.addEventListener("pointercancel", () => {
-    pointerStart = null;
-  });
+  const finishLayoutDrag = (event, cancelled = false) => {
+    if (!pointerStart || event.pointerId !== pointerStart.id) return;
+
+    const deltaX = event.clientX - pointerStart.x;
+    const deltaY = event.clientY - pointerStart.y;
+    const threshold = Math.min(92, Math.max(52, layoutViewport.clientWidth * 0.14));
+    const shouldSlide = !cancelled && pointerAxis === "horizontal" &&
+      Math.abs(deltaX) >= threshold && Math.abs(deltaX) > Math.abs(deltaY);
+
+    layoutViewport.releasePointerCapture?.(event.pointerId);
+
+    if (shouldSlide) {
+      layoutViewport.classList.remove("is-dragging", "is-snapping-back");
+      resetDragState();
+
+      const currentIndex = Math.max(0, layoutTabs.findIndex((tab) => tab.classList.contains("is-active")));
+      const direction = deltaX < 0 ? 1 : -1;
+      const nextIndex = (currentIndex + direction + layoutTabs.length) % layoutTabs.length;
+      activateLayout(layoutTabs[nextIndex].dataset.layoutTab, false, direction);
+      scheduleLayoutRotation(layoutManualDelay);
+      return;
+    }
+
+    layoutViewport.classList.add("is-snapping-back");
+    layoutViewport.style.setProperty("--layout-drag-x", "0px");
+    layoutViewport.style.setProperty("--layout-drag-rotate", "0deg");
+    window.setTimeout(() => {
+      layoutViewport.classList.remove("is-dragging", "is-snapping-back");
+      resetDragState();
+    }, 440);
+  };
+
+  layoutViewport.addEventListener("pointerup", (event) => finishLayoutDrag(event));
+  layoutViewport.addEventListener("pointercancel", (event) => finishLayoutDrag(event, true));
+  layoutViewport.addEventListener("dragstart", (event) => event.preventDefault());
 }
+
+window.addEventListener("resize", () => {
+  updateLayoutGlider(layoutTabs.find((tab) => tab.classList.contains("is-active")));
+});
+
+window.requestAnimationFrame(() => {
+  updateLayoutGlider(layoutTabs.find((tab) => tab.classList.contains("is-active")));
+});
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
@@ -201,3 +299,4 @@ exportButtons.forEach((button) => {
     if (exportDescription) exportDescription.textContent = content.description;
   });
 });
+
