@@ -41,9 +41,10 @@ const layoutMotionPreference = window.matchMedia("(prefers-reduced-motion: reduc
 const layoutStage = document.querySelector(".layout-stage");
 const layoutAutoDelay = 4000;
 const layoutManualDelay = 10000;
-const layoutTransitionDuration = 640;
+const layoutTransitionDuration = 520;
 let layoutRotationTimer = null;
 let layoutTransitionTimer = null;
+let layoutTransitionCleanup = null;
 let layoutIsVisible = !("IntersectionObserver" in window);
 
 const updateLayoutGlider = (tab) => {
@@ -64,13 +65,40 @@ const scheduleLayoutRotation = (delay = layoutAutoDelay) => {
   }, delay);
 };
 
-const activateLayout = (key, moveFocus = false, direction = 0) => {
+const syncLayoutViewportHeight = (panel, animate = true) => {
+  if (!layoutViewport || !panel || panel.hidden) return;
+
+  const viewportStyle = window.getComputedStyle(layoutViewport);
+  const verticalPadding = parseFloat(viewportStyle.paddingTop) + parseFloat(viewportStyle.paddingBottom);
+  const nextHeight = Math.ceil(panel.getBoundingClientRect().height + verticalPadding);
+
+  layoutViewport.classList.toggle("is-height-static", !animate);
+  layoutViewport.style.height = `${nextHeight}px`;
+
+  if (!animate) {
+    window.requestAnimationFrame(() => layoutViewport.classList.remove("is-height-static"));
+  }
+};
+
+const finishLayoutTransition = () => {
+  if (layoutTransitionCleanup) layoutTransitionCleanup();
+};
+
+const activateLayout = (key, moveFocus = false, direction = 0, releaseOffset = 0) => {
   const activeTab = layoutTabs.find((tab) => tab.dataset.layoutTab === key);
   const activePanel = layoutPanels.find((panel) => panel.dataset.layoutPanel === key);
   const previousTab = layoutTabs.find((tab) => tab.classList.contains("is-active"));
   const previousPanel = layoutPanels.find((panel) => panel.classList.contains("is-active"));
 
   if (!activeTab || !activePanel) return;
+
+  if (previousPanel === activePanel) {
+    updateLayoutGlider(activeTab);
+    if (moveFocus) activeTab.focus();
+    return;
+  }
+
+  finishLayoutTransition();
 
   const previousIndex = Math.max(0, layoutTabs.indexOf(previousTab));
   const nextIndex = layoutTabs.indexOf(activeTab);
@@ -96,31 +124,56 @@ const activateLayout = (key, moveFocus = false, direction = 0) => {
     );
   });
 
-  if (!previousPanel || previousPanel === activePanel || layoutMotionPreference.matches) {
+  if (layoutViewport) {
+    layoutViewport.classList.toggle("is-wide", activePanel.classList.contains("layout-panel--wide"));
+  }
+
+  if (!previousPanel || layoutMotionPreference.matches) {
     layoutPanels.forEach((panel) => {
       const isActive = panel === activePanel;
       panel.hidden = !isActive;
       panel.classList.toggle("is-active", isActive);
     });
+    syncLayoutViewportHeight(activePanel, false);
   } else {
     layoutPanels.forEach((panel) => {
       panel.hidden = panel !== previousPanel && panel !== activePanel;
       panel.classList.toggle("is-active", panel === activePanel);
     });
 
+    previousPanel.style.setProperty("--layout-exit-start", `${releaseOffset}px`);
+    syncLayoutViewportHeight(activePanel);
+
+    // Force a clean animation boundary after unhiding the incoming panel. This
+    // prevents stale transforms from a previous drag appearing for one frame.
+    void activePanel.offsetWidth;
     previousPanel.classList.add(resolvedDirection > 0 ? "is-leaving-next" : "is-leaving-previous");
     activePanel.classList.add(resolvedDirection > 0 ? "is-entering-next" : "is-entering-previous");
     layoutViewport?.classList.add("is-switching");
 
-    layoutTransitionTimer = window.setTimeout(() => {
+    let isClean = false;
+    const cleanup = () => {
+      if (isClean) return;
+      isClean = true;
+      window.clearTimeout(layoutTransitionTimer);
       previousPanel.hidden = true;
       previousPanel.classList.remove("is-leaving-next", "is-leaving-previous");
+      previousPanel.style.removeProperty("--layout-exit-start");
       activePanel.classList.remove("is-entering-next", "is-entering-previous");
       layoutViewport?.classList.remove("is-switching");
-    }, layoutTransitionDuration);
+      activePanel.removeEventListener("animationend", handleAnimationEnd);
+      if (layoutTransitionCleanup === cleanup) layoutTransitionCleanup = null;
+    };
+
+    const handleAnimationEnd = (event) => {
+      if (event.target === activePanel) cleanup();
+    };
+
+    activePanel.addEventListener("animationend", handleAnimationEnd);
+    layoutTransitionCleanup = cleanup;
+    layoutTransitionTimer = window.setTimeout(cleanup, layoutTransitionDuration + 120);
   }
 
-  if (layoutViewport) layoutViewport.classList.toggle("is-wide", key === "169");
   if (moveFocus) activeTab.focus();
 };
 
@@ -151,18 +204,33 @@ layoutTabs.forEach((tab, index) => {
 if (layoutViewport && layoutTabs.length > 1) {
   let pointerStart = null;
   let pointerAxis = null;
+  let pendingDragX = 0;
+  let renderedDragX = 0;
+  let dragFrame = 0;
+
+  const renderDrag = () => {
+    dragFrame = 0;
+    renderedDragX = pendingDragX;
+    layoutViewport.style.setProperty("--layout-drag-x", `${renderedDragX}px`);
+  };
 
   const resetDragState = () => {
+    if (dragFrame) window.cancelAnimationFrame(dragFrame);
     pointerStart = null;
     pointerAxis = null;
+    pendingDragX = 0;
+    renderedDragX = 0;
+    dragFrame = 0;
     layoutViewport.style.setProperty("--layout-drag-x", "0px");
-    layoutViewport.style.setProperty("--layout-drag-rotate", "0deg");
   };
 
   layoutViewport.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+    if (layoutViewport.classList.contains("is-switching")) return;
     pointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
     pointerAxis = null;
+    pendingDragX = 0;
+    renderedDragX = 0;
     layoutViewport.classList.add("is-dragging");
     layoutViewport.setPointerCapture?.(event.pointerId);
   });
@@ -182,8 +250,8 @@ if (layoutViewport && layoutTabs.length > 1) {
     event.preventDefault();
     const dragLimit = layoutViewport.clientWidth * 0.34;
     const resistedX = Math.max(-dragLimit, Math.min(dragLimit, deltaX * 0.86));
-    layoutViewport.style.setProperty("--layout-drag-x", `${resistedX}px`);
-    layoutViewport.style.setProperty("--layout-drag-rotate", `${resistedX / layoutViewport.clientWidth * 3.2}deg`);
+    pendingDragX = resistedX;
+    if (!dragFrame) dragFrame = window.requestAnimationFrame(renderDrag);
   });
 
   const finishLayoutDrag = (event, cancelled = false) => {
@@ -197,25 +265,29 @@ if (layoutViewport && layoutTabs.length > 1) {
 
     layoutViewport.releasePointerCapture?.(event.pointerId);
 
+    if (dragFrame) {
+      window.cancelAnimationFrame(dragFrame);
+      renderDrag();
+    }
+
     if (shouldSlide) {
       layoutViewport.classList.remove("is-dragging", "is-snapping-back");
-      resetDragState();
 
       const currentIndex = Math.max(0, layoutTabs.findIndex((tab) => tab.classList.contains("is-active")));
       const direction = deltaX < 0 ? 1 : -1;
       const nextIndex = (currentIndex + direction + layoutTabs.length) % layoutTabs.length;
-      activateLayout(layoutTabs[nextIndex].dataset.layoutTab, false, direction);
+      activateLayout(layoutTabs[nextIndex].dataset.layoutTab, false, direction, renderedDragX);
+      resetDragState();
       scheduleLayoutRotation(layoutManualDelay);
       return;
     }
 
     layoutViewport.classList.add("is-snapping-back");
     layoutViewport.style.setProperty("--layout-drag-x", "0px");
-    layoutViewport.style.setProperty("--layout-drag-rotate", "0deg");
     window.setTimeout(() => {
       layoutViewport.classList.remove("is-dragging", "is-snapping-back");
       resetDragState();
-    }, 440);
+    }, 300);
   };
 
   layoutViewport.addEventListener("pointerup", (event) => finishLayoutDrag(event));
@@ -224,11 +296,17 @@ if (layoutViewport && layoutTabs.length > 1) {
 }
 
 window.addEventListener("resize", () => {
-  updateLayoutGlider(layoutTabs.find((tab) => tab.classList.contains("is-active")));
+  const activeTab = layoutTabs.find((tab) => tab.classList.contains("is-active"));
+  const activePanel = layoutPanels.find((panel) => panel.classList.contains("is-active"));
+  updateLayoutGlider(activeTab);
+  syncLayoutViewportHeight(activePanel, false);
 });
 
 window.requestAnimationFrame(() => {
-  updateLayoutGlider(layoutTabs.find((tab) => tab.classList.contains("is-active")));
+  const activeTab = layoutTabs.find((tab) => tab.classList.contains("is-active"));
+  const activePanel = layoutPanels.find((panel) => panel.classList.contains("is-active"));
+  updateLayoutGlider(activeTab);
+  syncLayoutViewportHeight(activePanel, false);
 });
 
 document.addEventListener("visibilitychange", () => {
@@ -299,4 +377,3 @@ exportButtons.forEach((button) => {
     if (exportDescription) exportDescription.textContent = content.description;
   });
 });
-

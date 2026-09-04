@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5ff">
+  <meta name="theme-color" content="#08040f">
 
   <title>Account Deletion | Reaction Creator</title>
   <meta
@@ -22,10 +22,12 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="../assets/img/favicon.png">
-  <link rel="stylesheet" href="../assets/css/home-v2.css">
-  <link rel="stylesheet" href="../assets/css/legal-v2.css">
+  <link rel="icon" type="image/webp" href="../assets/img/favicon.webp">
+  <link rel="apple-touch-icon" href="../assets/img/favicon.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/legal-v3.css?v=20260904-1">
 </head>
 
 <body class="legal-page legal-page--deletion">
@@ -34,7 +36,7 @@
   <header class="site-header">
     <nav class="nav shell" aria-label="Main navigation">
       <a class="brand" href="/" aria-label="Reaction Creator home">
-        <span class="brand__icon"><img src="../assets/img/favicon.png" alt="" width="512" height="512"></span>
+        <span class="brand__icon"><img src="../assets/img/favicon.webp" alt="" width="512" height="512"></span>
         <span class="brand__text">
           <strong>Reaction Creator</strong>
           <small>Reaction videos, simplified.</small>
@@ -51,7 +53,7 @@
         <a href="/features/">Features</a>
         <a href="/pricing/">Pricing</a>
         <a href="/support/">Support</a>
-        <a class="nav-menu__cta" href="/pricing/">View plans</a>
+        <a class="nav-menu__cta" href="https://play.google.com/store/apps/details?id=com.reaction.reactioncreator">Get the app</a>
       </div>
     </nav>
   </header>
@@ -76,7 +78,7 @@
             </a>
           </div>
 
-          <p class="legal-hero__meta">Last updated August 27, 2026 · Published by Phantom Code</p>
+          <p class="legal-hero__meta">Last updated June 16, 2026 · Published by Phantom Code</p>
         </div>
 
         <div class="legal-hero__visual" aria-label="Account deletion overview">
@@ -89,7 +91,7 @@
 
           <article class="legal-fact legal-fact--pending">
             <small>Pending period</small>
-            <strong>7 days</strong>
+            <strong>Up to 24 hours</strong>
           </article>
           <article class="legal-fact legal-fact--cancel">
             <small>Before it expires</small>
@@ -119,7 +121,7 @@
           <article class="summary-card summary-card--tint">
             <span>02</span>
             <h3>Deletion has a pending period</h3>
-            <p>The in-app request remains pending for seven days before scheduled processing.</p>
+            <p>The in-app request remains pending for up to 24 hours before scheduled processing.</p>
           </article>
           <article class="summary-card">
             <span>03</span>
@@ -151,7 +153,7 @@
           <article class="legal-article legal-article--intro" id="meaning">
             <p class="legal-article__number">01 · Before you begin</p>
             <h2>What account deletion means</h2>
-            <p>Deleting a Reaction Creator account starts a seven-day cancellation period. After that period, the scheduled backend process is designed to delete the Firebase Authentication account, the associated Firestore account document, and nested quota reservation records.</p>
+            <p>Deleting a Reaction Creator account starts a pending deletion period of up to 24 hours. After that period, the scheduled backend process is designed to delete or anonymize the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
             <p>Deleting the app from your phone is not the same as deleting your account. Uninstalling the app removes app access from that device, but it does not send an account deletion request to Reaction Creator.</p>
             <p>Account deletion does not cancel Google Play subscriptions and does not automatically remove local files, public exports, shared copies, Google Play purchase records, RevenueCat records, Firebase Analytics history, Crashlytics reports, Cloud Functions logs, or other operational logs.</p>
           </article>
@@ -162,7 +164,7 @@
                 <p class="legal-article__number">02 · Recommended method</p>
                 <h2>Delete your account in the app</h2>
               </div>
-              <span class="legal-pill">7-day cancellation period</span>
+              <span class="legal-pill">Up to 24 hours pending</span>
             </div>
 
             <ol class="deletion-steps">
@@ -189,9 +191,9 @@
           <article class="legal-article" id="timing">
             <p class="legal-article__number">04 · Timing</p>
             <h2>How long deletion takes</h2>
-            <p>The in-app deletion request starts a seven-day cancellation period.</p>
+            <p>The in-app deletion request starts a pending deletion period of up to 24 hours.</p>
             <p>If you sign in again before the cancellation period expires, the deletion request is cancelled and the account remains active.</p>
-            <p>After the cancellation period expires, signing in no longer reactivates the account. A scheduled backend process runs periodically and is designed to delete the Firebase Authentication account, the associated Firestore account document, and nested quota reservation records.</p>
+            <p>After the pending deletion period expires, signing in no longer reactivates the account. A scheduled backend process runs periodically and is designed to delete or anonymize the Firebase Authentication account and associated Firestore account data according to the implemented deletion process.</p>
             <p>Because the backend process runs on a schedule, final processing can occur after the pending period has ended.</p>
           </article>
 
@@ -199,7 +201,7 @@
             <article class="legal-article" id="deleted">
               <p class="legal-article__number">05 · Included</p>
               <h2>Data handled by the app-account deletion process</h2>
-              <p>The implemented backend process is designed to delete:</p>
+              <p>The implemented backend process is designed to delete or anonymize:</p>
               <ul>
                 <li>the Firebase Authentication account for Reaction Creator</li>
                 <li>the associated Firestore account document</li>
@@ -265,7 +267,7 @@
     <div class="shell footer-grid">
       <div class="footer-brand">
         <a class="brand" href="/" aria-label="Reaction Creator home">
-          <span class="brand__icon"><img src="../assets/img/favicon.png" alt="" width="512" height="512"></span>
+          <span class="brand__icon"><img src="../assets/img/favicon.webp" alt="" width="512" height="512"></span>
           <span class="brand__text"><strong>Reaction Creator</strong></span>
         </a>
         <p>A focused mobile workflow for creating reaction videos.</p>
@@ -276,7 +278,7 @@
         <div class="footer-links">
           <a href="/features/">Features</a>
           <a href="/pricing/">Pricing</a>
-          <a href="/pricing/#download">Launch status</a>
+          <a href="https://play.google.com/store/apps/details?id=com.reaction.reactioncreator">Download</a>
         </div>
       </div>
 
@@ -302,6 +304,8 @@
     </div>
   </footer>
 
-  <script src="../assets/js/home-v2.js?v=20260825"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/legal-v3.js?v=20260904-1"></script>
 </body>
 </html>
