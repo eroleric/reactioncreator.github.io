@@ -3051,6 +3051,22 @@ html.no-gsap .export-step.is-active {
   color: #2d203c;
 }
 
+@media (max-width: 720px) {
+  html.no-gsap main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  html.no-gsap .hero { order: 1; }
+  html.no-gsap .formats { order: 2; }
+  html.no-gsap .workflow { order: 3; }
+  html.no-gsap .instant { order: 4; }
+  html.no-gsap .orientation { order: 5; }
+  html.no-gsap .editor-choice { order: 6; }
+  html.no-gsap .continuity { order: 7; }
+  html.no-gsap .download { order: 8; }
+}
+
 html.no-gsap .export-step::before {
   border-color: #f7f4fb;
   box-shadow: 0 0 0 1px rgba(74, 49, 121, 0.24);
