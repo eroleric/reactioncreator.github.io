@@ -3067,6 +3067,89 @@ html.no-gsap .export-step.is-active {
   html.no-gsap .download { order: 8; }
 }
 
+@media (max-width: 720px) {
+  html.no-gsap .nav,
+  html.no-gsap .site-header.is-scrolled .nav {
+    min-height: 60px;
+    justify-content: flex-start;
+    padding: 6px 7px 6px 8px;
+    border: 1px solid rgba(91, 67, 134, 0.12);
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0.98), #f7f4ff, #edfbfc);
+    box-shadow: 0 16px 38px rgba(38, 22, 68, 0.16), inset 0 1px 0 #fff;
+    pointer-events: auto;
+  }
+
+  html.no-gsap .nav::before {
+    display: none;
+  }
+
+  html.no-gsap .nav::after,
+  html.no-gsap body.menu-open .nav::after {
+    z-index: 0;
+    opacity: 0.48;
+  }
+
+  html.no-gsap .nav > .brand,
+  html.no-gsap body.menu-open .nav > .brand {
+    position: relative;
+    z-index: 1;
+    left: auto;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    transition: none;
+  }
+
+  html.no-gsap body.menu-open .nav,
+  html.no-gsap body.menu-open .site-header.is-scrolled .nav {
+    pointer-events: auto;
+  }
+
+  html.no-gsap .brand-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  html.no-gsap .brand-mark img {
+    width: 34px;
+    height: 34px;
+  }
+
+  html.no-gsap .brand-lockup strong {
+    font-size: 13px;
+  }
+
+  html.no-gsap .nav-toggle,
+  html.no-gsap .nav-toggle.is-open {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    margin-left: auto;
+    border: 1px solid rgba(89, 64, 136, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 8px 20px rgba(47, 28, 82, 0.1);
+  }
+
+  html.no-gsap .nav-toggle::before {
+    display: none;
+  }
+
+  html.no-gsap .nav-toggle-icon i {
+    background: #20152e;
+    box-shadow: none;
+  }
+
+  html.no-gsap .nav-menu {
+    transition: opacity 180ms var(--ease), transform 240ms var(--ease);
+  }
+
+  html.no-gsap .nav-menu.is-open {
+    transition-delay: 0ms;
+  }
+}
+
 html.no-gsap .export-step::before {
   border-color: #f7f4fb;
   box-shadow: 0 0 0 1px rgba(74, 49, 121, 0.24);
