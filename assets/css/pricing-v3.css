@@ -31,3 +31,34 @@ html.no-gsap .pricing-rings,
 html.no-gsap .pricing-palette:not(.pricing-palette--hero){display:none}
 html.no-gsap .pricing-palette--hero{opacity:1;will-change:auto}
 html.no-gsap [data-reveal]{opacity:1;visibility:visible;transform:none;will-change:auto}
+
+/* Light-first visual system shared with the approved home page. */
+html.no-gsap body{color:var(--ink);background:radial-gradient(circle at 8% 12%,rgba(177,112,255,.18),transparent 30%),radial-gradient(circle at 92% 29%,rgba(48,217,209,.16),transparent 28%),linear-gradient(180deg,#faf9fd 0%,#f1edf9 46%,#edf7f8 100%)}
+.no-gsap .page-progress,.no-gsap .pricing-atmosphere,.no-gsap .pricing-mantra{display:none}
+.no-gsap .pricing-hero,.no-gsap .plan-studio,.no-gsap .comparison,.no-gsap .upgrade-logic,.no-gsap .billing-trust,.no-gsap .pricing-faq,.no-gsap .pricing-download{color:var(--ink);background:transparent}
+.no-gsap .pricing-hero__copy>p:last-of-type,.no-gsap .pricing-hero__actions>span,.no-gsap .comparison__heading>p,.no-gsap .pricing-faq details p{color:#6e6678}
+.no-gsap .button--ghost{color:#241631;border-color:rgba(91,61,140,.14);background:rgba(255,255,255,.64)}
+.no-gsap .pace-orbit{border-color:rgba(84,56,133,.12);background:rgba(255,255,255,.24);box-shadow:0 28px 70px rgba(56,36,91,.08)}
+.no-gsap .pace-orbit::before,.no-gsap .pace-orbit__ring{border-color:rgba(100,65,166,.17)}
+.no-gsap .pace-orbit__ring--two{border-color:rgba(30,173,171,.19)}
+.no-gsap .pace-orbit__core{border-color:rgba(85,56,134,.12);background:radial-gradient(circle at 32% 22%,#fff,#eae3f6 68%);box-shadow:0 26px 70px rgba(53,34,88,.14)}
+.no-gsap .pace-orbit__core span{color:#675f71}
+.no-gsap .pace-node{color:var(--ink);border-color:rgba(84,56,133,.13);background:rgba(255,255,255,.88);box-shadow:0 16px 38px rgba(45,28,76,.11)}
+.no-gsap .plan-panel--annual{color:var(--ink);background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(220,239,243,.65))}
+.no-gsap .plan-panel--annual .plan-eyebrow{color:#6335d0!important}
+.no-gsap .plan-panel--annual .plan-panel__copy>p:not(.plan-eyebrow),.no-gsap .plan-panel--annual li,.no-gsap .plan-panel--annual .plan-panel__meter p{color:#665e70}
+.no-gsap .plan-panel--annual .plan-panel__meter{border-color:rgba(85,56,134,.11);background:rgba(255,255,255,.55)}
+.no-gsap .plan-panel--annual .plan-panel__meter strong{color:#5630c1}
+.no-gsap .plan-panel--annual .button--white{color:#fff;background:linear-gradient(135deg,#8b3cff,#6250ff 56%,#20bec8);box-shadow:0 16px 40px rgba(103,67,255,.28)}
+.no-gsap .comparison__table{border-color:rgba(78,49,122,.12);background:rgba(255,255,255,.55);box-shadow:0 28px 70px rgba(51,31,83,.07)}
+.no-gsap .comparison th,.no-gsap .comparison td{border-color:rgba(78,49,122,.1)}
+.no-gsap .comparison thead th{color:#766d80}.no-gsap .comparison td{color:#5f5769}.no-gsap .comparison td span{color:#168f8b}
+.no-gsap .pricing-faq__list,.no-gsap .pricing-faq details{border-color:rgba(78,49,122,.14)}
+.no-gsap .pricing-faq summary{color:var(--ink)}
+.no-gsap .pricing-faq summary span{color:#6939da;border-color:rgba(84,55,132,.16);background:rgba(255,255,255,.52)}
+.no-gsap .pricing-download__panel{color:#fff}
+.no-gsap .pricing-download__panel .kicker--light{color:#d5c8f2}
+.no-gsap .site-footer{color:var(--ink);border-top:1px solid rgba(81,52,130,.1);background:rgba(250,249,253,.7)}
+.no-gsap .site-footer .footer-brand p,.no-gsap .site-footer .footer-links a,.no-gsap .site-footer .footer-bottom{color:#706779}
+.no-gsap .site-footer .footer-links a:hover{color:#4e28b0}.no-gsap .site-footer .footer-bottom{border-color:rgba(81,52,130,.1)}
+@media (max-width:720px){html.no-gsap .nav,html.no-gsap .site-header.is-scrolled .nav{min-height:60px;justify-content:flex-start;padding:6px 7px 6px 8px;border:1px solid rgba(91,67,134,.12);background:linear-gradient(110deg,#fff,#f7f4ff 58%,#edfcfd);box-shadow:0 18px 46px rgba(33,18,58,.14),inset 0 1px 0 #fff;pointer-events:auto}html.no-gsap .nav:before{display:none}html.no-gsap .nav:after,html.no-gsap body.menu-open .nav:after{opacity:.48}html.no-gsap .nav>.brand,html.no-gsap body.menu-open .nav>.brand{position:relative;left:auto;opacity:1;pointer-events:auto;transform:none;transition:none}html.no-gsap .brand-mark{width:44px;height:44px;border-radius:14px}html.no-gsap .brand-mark img{width:34px;height:34px}html.no-gsap .brand-lockup strong{font-size:13px}html.no-gsap .nav-toggle{width:46px;height:46px;flex-basis:46px;margin-left:auto;border:1px solid rgba(91,67,134,.13);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 22px rgba(45,28,75,.1)}html.no-gsap .nav-toggle:before{display:none}html.no-gsap .nav-toggle-icon i{background:var(--ink)}html.no-gsap .nav-menu{transition:opacity 180ms var(--ease),transform 220ms var(--ease)}html.no-gsap .nav-menu.is-open{transition-delay:0ms}}

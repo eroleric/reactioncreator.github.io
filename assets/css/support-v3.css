@@ -336,3 +336,48 @@ html.no-gsap [data-reveal] {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .page-progress { display: none; }
 }
+
+/* Light-first visual system shared with the approved home page. */
+html.no-gsap body {
+  color: var(--ink);
+  background: radial-gradient(circle at 8% 12%, rgba(177, 112, 255, .18), transparent 30%), radial-gradient(circle at 92% 29%, rgba(48, 217, 209, .16), transparent 28%), linear-gradient(180deg, #faf9fd 0%, #f1edf9 46%, #edf7f8 100%);
+}
+.no-gsap .page-progress, .no-gsap .support-atmosphere, .no-gsap .support-ticker { display: none; }
+.no-gsap .support-hero, .no-gsap .answer-workspace, .no-gsap .report-path, .no-gsap .support-contact { color: var(--ink); background: transparent; }
+.no-gsap .kicker--light { color: #6937df; }
+.no-gsap .support-hero__intro > p:last-child, .no-gsap .support-panels article > p:not(.panel-number), .no-gsap .report-path__heading > p:last-child, .no-gsap .report-path__steps p { color: #6e6678; }
+.no-gsap .support-console { border-color: rgba(83, 54, 131, .12); background: rgba(255, 255, 255, .56); box-shadow: 0 30px 76px rgba(48, 30, 80, .1), inset 0 1px 0 rgba(255, 255, 255, .9); backdrop-filter: blur(14px); }
+.no-gsap .support-console__signal { border-color: rgba(83, 54, 131, .1); }
+.no-gsap .signal-ring { border-color: rgba(102, 65, 170, .15); }
+.no-gsap .signal-core { border-color: rgba(83, 54, 131, .12); background: radial-gradient(circle at 32% 24%, #fff, #e9e1f5 68%); box-shadow: 0 24px 64px rgba(48, 30, 80, .13); }
+.no-gsap .signal-core img { opacity: .42; }
+.no-gsap .support-tabs { border-color: rgba(83, 54, 131, .1); background: rgba(91, 60, 145, .045); }
+.no-gsap .support-tabs button { color: #786f82; }
+.no-gsap .support-tabs button:hover { color: var(--ink); }
+.no-gsap .support-tabs button.is-active { color: #fff; }
+.no-gsap .support-panels a { color: #33243f; border-color: rgba(83, 54, 131, .13); background: rgba(255, 255, 255, .66); }
+.no-gsap .support-panels a:first-child { color: #fff; border-color: transparent; background: linear-gradient(135deg, #7d3fff, #5b50ec 58%, #23b7c4); }
+.no-gsap .report-path__steps li { color: var(--ink); border-color: rgba(83, 54, 131, .11); background: rgba(255, 255, 255, .58); box-shadow: 0 24px 60px rgba(49, 31, 81, .08); backdrop-filter: none; }
+.no-gsap .report-path__steps li > span { color: #756c80; }
+.no-gsap .report-path__steps li > i { color: #6539d1; border-color: rgba(83, 54, 131, .12); background: rgba(113, 68, 218, .08); }
+.no-gsap .support-contact__panel { color: #fff; }
+.no-gsap .support-contact__panel .kicker--light { color: #d5c8f2; }
+.no-gsap .site-footer { color: var(--ink); border-top: 1px solid rgba(81, 52, 130, .1); background: rgba(250, 249, 253, .7); }
+.no-gsap .site-footer .footer-brand p, .no-gsap .site-footer .footer-links a, .no-gsap .site-footer .footer-bottom { color: #706779; }
+.no-gsap .site-footer .footer-links a:hover { color: #4e28b0; }
+.no-gsap .site-footer .footer-bottom { border-color: rgba(81, 52, 130, .1); }
+
+@media (max-width: 720px) {
+  html.no-gsap .nav, html.no-gsap .site-header.is-scrolled .nav { min-height: 60px; justify-content: flex-start; padding: 6px 7px 6px 8px; border: 1px solid rgba(91, 67, 134, .12); background: linear-gradient(110deg, #fff, #f7f4ff 58%, #edfcfd); box-shadow: 0 18px 46px rgba(33, 18, 58, .14), inset 0 1px 0 #fff; pointer-events: auto; }
+  html.no-gsap .nav::before { display: none; }
+  html.no-gsap .nav::after, html.no-gsap body.menu-open .nav::after { opacity: .48; }
+  html.no-gsap .nav > .brand, html.no-gsap body.menu-open .nav > .brand { position: relative; left: auto; opacity: 1; pointer-events: auto; transform: none; transition: none; }
+  html.no-gsap .brand-mark { width: 44px; height: 44px; border-radius: 14px; }
+  html.no-gsap .brand-mark img { width: 34px; height: 34px; }
+  html.no-gsap .brand-lockup strong { font-size: 13px; }
+  html.no-gsap .nav-toggle { width: 46px; height: 46px; flex-basis: 46px; margin-left: auto; border: 1px solid rgba(91, 67, 134, .13); border-radius: 14px; background: rgba(255, 255, 255, .82); box-shadow: 0 8px 22px rgba(45, 28, 75, .1); }
+  html.no-gsap .nav-toggle::before { display: none; }
+  html.no-gsap .nav-toggle-icon i { background: var(--ink); }
+  html.no-gsap .nav-menu { transition: opacity 180ms var(--ease), transform 220ms var(--ease); }
+  html.no-gsap .nav-menu.is-open { transition-delay: 0ms; }
+}
