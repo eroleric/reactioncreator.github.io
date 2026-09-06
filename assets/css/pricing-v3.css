@@ -24,3 +24,10 @@
 @media(max-width:410px){.pace-node{min-width:92px}.pace-node--free{left:1%}.pace-node--annual{right:1%}.plan-panels{min-height:820px}.pricing-download__numbers{font-size:145px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.page-progress{display:none}}
 .google-play img{width:100%;height:auto}
+
+/* Stable mode favors fast reading over decorative scroll effects. */
+html.no-gsap .page-progress,
+html.no-gsap .pricing-rings,
+html.no-gsap .pricing-palette:not(.pricing-palette--hero){display:none}
+html.no-gsap .pricing-palette--hero{opacity:1;will-change:auto}
+html.no-gsap [data-reveal]{opacity:1;visibility:visible;transform:none;will-change:auto}

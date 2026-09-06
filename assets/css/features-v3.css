@@ -206,6 +206,27 @@ em { color: transparent; background: linear-gradient(105deg, var(--violet), var(
 
 .no-gsap .layout-lab,.no-gsap .fast-finish,.no-gsap .project-continuity { background: #f0edf8; }.no-gsap .record-together,.no-gsap .creator-fit,.no-gsap .feature-faq { background: #0a0512; }.no-gsap .flow-line::before { transform: scaleX(1); }
 
+/* Stable mode keeps the product content and removes decorative scroll work. */
+html.no-gsap .page-progress,
+html.no-gsap .creator-strip,
+html.no-gsap .atmosphere-wash,
+html.no-gsap .atmosphere-field,
+html.no-gsap .feature-palette:not(.feature-palette--hero) {
+  display: none;
+}
+
+html.no-gsap .feature-palette--hero {
+  opacity: 1;
+  will-change: auto;
+}
+
+html.no-gsap [data-reveal] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  will-change: auto;
+}
+
 @media (max-width: 1120px) {
   .feature-hero__layout { min-height: 112svh; }.feature-hero__visual { min-height: 620px; }.hero-device--front { left: 10%; }.hero-device--back { right: 10%; }
   .layout-story { grid-template-columns: minmax(360px,.9fr) minmax(330px,.72fr); gap: 50px; }.record-together__layout { grid-template-columns: minmax(320px,.8fr) minmax(470px,1.15fr); }.project-continuity__layout { grid-template-columns: minmax(300px,.7fr) minmax(480px,1.1fr); gap: 50px; }

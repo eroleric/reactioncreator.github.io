@@ -2972,3 +2972,215 @@ em {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Professional stability pass: the page remains complete and readable at every scroll speed. */
+html.no-gsap .page-progress,
+html.no-gsap .creator-ticker {
+  display: none;
+}
+
+html.no-gsap .ambient-wash,
+html.no-gsap .ambient-orb,
+html.no-gsap .ambient-depth,
+html.no-gsap .ambient-palette:not(.ambient-palette-hero) {
+  display: none;
+}
+
+html.no-gsap .ambient-palette-hero {
+  opacity: 1;
+  will-change: auto;
+}
+
+html.no-gsap .hero-copy,
+html.no-gsap .hero-visual,
+html.no-gsap [data-reveal],
+html.no-gsap [data-depth] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  will-change: auto;
+}
+
+html.no-gsap .workflow-pin {
+  min-height: auto;
+  overflow: hidden;
+  padding: clamp(90px, 9vw, 138px) 0;
+}
+
+html.no-gsap .workflow-story {
+  min-height: auto;
+  grid-template-rows: auto;
+  align-items: center;
+  padding: 0;
+}
+
+html.no-gsap .workflow-runway {
+  min-height: auto;
+  display: grid;
+  gap: 0;
+}
+
+html.no-gsap .workflow-runway article,
+html.no-gsap .workflow-runway article:first-child {
+  position: relative;
+  inset: auto;
+  min-height: auto;
+  display: block;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+html.no-gsap .workflow-runway article:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+html.no-gsap .workflow-runway h3 {
+  font-size: clamp(2rem, 3vw, 3.35rem);
+  line-height: 0.94;
+}
+
+html.no-gsap .workflow-runway p {
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+html.no-gsap .workflow-manifesto {
+  position: relative;
+  inset: auto;
+  grid-column: 1 / -1;
+  width: auto;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.no-gsap .export-step,
+html.no-gsap .export-step.is-active {
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 1;
+  transform: none;
+}
+
+html.no-gsap .export-step::before {
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+}
+
+@media (min-width: 721px) {
+  html.no-gsap .formats {
+    padding: clamp(105px, 9vw, 145px) 0;
+  }
+
+  html.no-gsap .formats-pin {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  html.no-gsap .formats-heading {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  html.no-gsap .formats-heading > p:last-child {
+    margin-top: 24px;
+  }
+
+  html.no-gsap .format-wall {
+    position: relative;
+    inset: auto;
+    display: grid;
+    gap: 24px;
+    margin-top: 62px;
+  }
+
+  html.no-gsap .format-card,
+  html.no-gsap .format-card:first-child {
+    position: relative;
+    inset: auto;
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: minmax(270px, 0.72fr) minmax(340px, 1fr);
+    align-items: center;
+    gap: clamp(35px, 6vw, 90px);
+    overflow: hidden;
+    padding: clamp(34px, 5vw, 68px);
+    border: 1px solid rgba(79, 49, 128, 0.11);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.56);
+    box-shadow: 0 24px 70px rgba(47, 27, 82, 0.08);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  html.no-gsap .format-card:nth-child(even) .format-copy {
+    grid-column: 2;
+  }
+
+  html.no-gsap .format-card:nth-child(even) figure {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  html.no-gsap .format-card::before {
+    right: 2%;
+    bottom: -4%;
+    font-size: clamp(9rem, 18vw, 18rem);
+  }
+
+  html.no-gsap .format-copy {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  html.no-gsap .format-copy h3 {
+    font-size: clamp(2.8rem, 4.2vw, 4.7rem);
+  }
+
+  html.no-gsap .phone-stage,
+  html.no-gsap .wide-stage {
+    position: relative;
+    inset: auto;
+    justify-self: center;
+  }
+
+  html.no-gsap .phone-stage {
+    width: min(285px, 24vw);
+  }
+
+  html.no-gsap .wide-stage {
+    width: min(720px, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  html.no-gsap .workflow-pin {
+    padding: 82px 0 70px;
+  }
+
+  html.no-gsap .workflow-story {
+    gap: 24px;
+  }
+
+  html.no-gsap .workflow-runway article,
+  html.no-gsap .workflow-runway article:first-child {
+    min-height: auto;
+    padding: 24px 0 28px;
+  }
+
+  html.no-gsap .workflow-runway h3 {
+    font-size: clamp(2.35rem, 10.5vw, 3.25rem);
+  }
+
+  html.no-gsap .format-card,
+  html.no-gsap .format-card:first-child {
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+}

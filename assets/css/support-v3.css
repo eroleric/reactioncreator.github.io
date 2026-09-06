@@ -190,6 +190,25 @@ em { color: transparent; background: linear-gradient(105deg, var(--violet), var(
 .no-gsap .answer-workspace, .no-gsap .support-contact { background: #f1eef7; }
 .no-gsap .support-hero, .no-gsap .report-path { background: #08040f; }
 
+/* Stable mode keeps support interactions immediate and easy to scan. */
+html.no-gsap .page-progress,
+html.no-gsap .support-field,
+html.no-gsap .support-palette:not(.support-palette--hero) {
+  display: none;
+}
+
+html.no-gsap .support-palette--hero {
+  opacity: 1;
+  will-change: auto;
+}
+
+html.no-gsap [data-reveal] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  will-change: auto;
+}
+
 @media (max-width: 1000px) {
   .support-hero { min-height: auto; padding-bottom: 80px; }
   .support-hero__intro, .answer-workspace__heading { grid-template-columns: 1fr; }
