@@ -83,6 +83,7 @@ textarea:focus{border-color:rgba(116,64,237,.52);box-shadow:0 0 0 4px rgba(116,6
 .submit-panel>div>p:last-child{margin-top:10px;color:rgba(255,255,255,.75);font-size:14px}
 .button{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 21px;border:0;border-radius:15px;color:var(--ink);background:#fff;box-shadow:0 14px 35px rgba(30,12,58,.2);cursor:pointer;font-size:14px;font-weight:800;transition:transform 170ms var(--ease)}
 .button:hover{transform:translateY(-2px)}
+.button:disabled{cursor:wait;opacity:.72;transform:none}
 .form-error{grid-column:1/-1;min-height:1.3em;color:#ffe3ee;font-size:13px;font-weight:700}
 
 .finish-view{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;margin-bottom:90px;padding:55px;border-radius:32px;color:#fff;background:linear-gradient(125deg,#7025ef,#7e35ff 42%,#2c5ec2 74%,#166f85)}

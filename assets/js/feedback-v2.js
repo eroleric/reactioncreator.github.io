@@ -1,17 +1,5 @@
 const labels = ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'];
-const titles = {
-  'getting-started': 'Getting Started',
-  'audio-setup': 'Audio Setup',
-  'starting-recording': 'Starting a Recording',
-  'recording-controls': 'Recording Controls',
-  'video-layout': 'Video Layout',
-  editor: 'Editor',
-  timeline: 'Timeline',
-  exporting: 'Exporting',
-  'final-video': 'Final Video',
-  'overall-experience': 'Overall Experience'
-};
-
+const submissionUrl = 'https://script.google.com/macros/s/AKfycbwEI6a8HfX-i46GYGFufgxBW-6tR5N5ru-j4siaoXm_qA8NdaaFdXo5c1BHnq4Z7hMl/exec';
 const header = document.querySelector('[data-header]');
 const navToggle = document.querySelector('[data-nav-toggle]');
 const navMenu = document.querySelector('[data-nav-menu]');
@@ -22,7 +10,6 @@ const completed = document.querySelector('[data-completed]');
 const error = document.querySelector('[data-form-error]');
 const finish = document.querySelector('[data-finish]');
 const status = document.querySelector('[data-status]');
-let report = '';
 
 document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = new Date().getFullYear();
@@ -81,27 +68,7 @@ form.addEventListener('change', (event) => {
   if (event.target.matches('.rating input')) updateProgress();
 });
 
-const buildReport = (data) => {
-  const lines = [
-    'REACTION CREATOR — PREMIUM BETA UX SURVEY',
-    `Completed: ${new Date().toISOString()}`
-  ];
-
-  Object.keys(titles).forEach((key, index) => {
-    const rating = data.get(`rating-${key}`);
-    const feedback = String(data.get(`feedback-${key}`) || '').trim();
-    lines.push(
-      '',
-      `${index + 1}. ${titles[key]}`,
-      `Rating: ${rating}/5 — ${labels[Number(rating) - 1]}`,
-      `Feedback: ${feedback || 'No written feedback'}`
-    );
-  });
-
-  return lines.join('\n');
-};
-
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) {
     error.textContent = 'Please choose a rating for every statement.';
@@ -111,27 +78,25 @@ form.addEventListener('submit', (event) => {
   }
 
   error.textContent = '';
-  report = buildReport(new FormData(form));
-  form.hidden = true;
-  document.querySelector('.survey-intro').hidden = true;
-  document.querySelector('.survey-progress').hidden = true;
-  finish.hidden = false;
-  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-});
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalLabel = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.textContent = 'Saving…';
 
-document.querySelector('[data-send]').addEventListener('click', () => {
-  const subject = encodeURIComponent('Reaction Creator Premium Beta UX Survey');
-  const body = encodeURIComponent(report);
-  status.textContent = 'Opening your email app…';
-  window.location.href = `mailto:reactioncreatorteam@gmail.com?subject=${subject}&body=${body}`;
-});
-
-document.querySelector('[data-copy]').addEventListener('click', async () => {
   try {
-    await navigator.clipboard.writeText(report);
-    status.textContent = 'Answers copied. Paste them into an email to reactioncreatorteam@gmail.com.';
+    const payload = new URLSearchParams();
+    new FormData(form).forEach((value, key) => payload.append(key, String(value)));
+    await fetch(submissionUrl, { method: 'POST', mode: 'no-cors', body: payload });
+    form.hidden = true;
+    document.querySelector('.survey-intro').hidden = true;
+    document.querySelector('.survey-progress').hidden = true;
+    finish.hidden = false;
+    status.textContent = 'Your response has been saved successfully.';
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   } catch {
-    status.textContent = 'Copy was blocked. Use “Send by email” instead.';
+    error.textContent = 'Your response could not be saved. Check your connection and try again.';
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalLabel;
   }
 });
 
