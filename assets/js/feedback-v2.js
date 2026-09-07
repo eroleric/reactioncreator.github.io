@@ -68,7 +68,41 @@ form.addEventListener('change', (event) => {
   if (event.target.matches('.rating input')) updateProgress();
 });
 
-form.addEventListener('submit', async (event) => {
+const submitWithHiddenForm = (data) => {
+  const frameName = `survey-submit-${Date.now()}`;
+  const frame = document.createElement('iframe');
+  frame.name = frameName;
+  frame.hidden = true;
+  frame.setAttribute('aria-hidden', 'true');
+
+  const relay = document.createElement('form');
+  relay.method = 'POST';
+  relay.action = submissionUrl;
+  relay.target = frameName;
+  relay.hidden = true;
+
+  data.forEach((value, key) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = String(value);
+    relay.append(input);
+  });
+
+  document.body.append(frame, relay);
+  relay.submit();
+  window.setTimeout(() => { relay.remove(); frame.remove(); }, 15000);
+};
+
+const queueSubmission = (data) => {
+  const payload = new URLSearchParams();
+  data.forEach((value, key) => payload.append(key, String(value)));
+
+  if (typeof navigator.sendBeacon === 'function' && navigator.sendBeacon(submissionUrl, payload)) return;
+  submitWithHiddenForm(data);
+};
+
+form.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!form.reportValidity()) {
     error.textContent = 'Please choose a rating for every statement.';
@@ -79,25 +113,15 @@ form.addEventListener('submit', async (event) => {
 
   error.textContent = '';
   const submitButton = form.querySelector('button[type="submit"]');
-  const originalLabel = submitButton.innerHTML;
   submitButton.disabled = true;
-  submitButton.textContent = 'Saving…';
-
-  try {
-    const payload = new URLSearchParams();
-    new FormData(form).forEach((value, key) => payload.append(key, String(value)));
-    await fetch(submissionUrl, { method: 'POST', mode: 'no-cors', body: payload });
-    form.hidden = true;
-    document.querySelector('.survey-intro').hidden = true;
-    document.querySelector('.survey-progress').hidden = true;
-    finish.hidden = false;
-    status.textContent = 'Your response has been saved successfully.';
-    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  } catch {
-    error.textContent = 'Your response could not be saved. Check your connection and try again.';
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalLabel;
-  }
+  submitButton.textContent = 'Sending…';
+  queueSubmission(new FormData(form));
+  form.hidden = true;
+  document.querySelector('.survey-intro').hidden = true;
+  document.querySelector('.survey-progress').hidden = true;
+  finish.hidden = false;
+  status.textContent = 'Your response has been sent successfully.';
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 });
 
 updateProgress();
