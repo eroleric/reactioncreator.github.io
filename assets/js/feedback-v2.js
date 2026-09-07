@@ -120,8 +120,10 @@ form.addEventListener('submit', (event) => {
   document.querySelector('.survey-intro').hidden = true;
   document.querySelector('.survey-progress').hidden = true;
   finish.hidden = false;
-  status.textContent = 'Your response has been sent successfully.';
+  document.body.classList.add('survey-complete');
+  status.textContent = 'Survey complete. Thank you for your feedback.';
   window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  window.requestAnimationFrame(() => finish.focus({ preventScroll: true }));
 });
 
 updateProgress();
