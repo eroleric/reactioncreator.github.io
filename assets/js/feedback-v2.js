@@ -68,41 +68,26 @@ form.addEventListener('change', (event) => {
   if (event.target.matches('.rating input')) updateProgress();
 });
 
-const submitWithHiddenForm = (data) => {
-  const frameName = `survey-submit-${Date.now()}`;
-  const frame = document.createElement('iframe');
-  frame.name = frameName;
-  frame.hidden = true;
-  frame.setAttribute('aria-hidden', 'true');
-
-  const relay = document.createElement('form');
-  relay.method = 'POST';
-  relay.action = submissionUrl;
-  relay.target = frameName;
-  relay.hidden = true;
-
-  data.forEach((value, key) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = String(value);
-    relay.append(input);
-  });
-
-  document.body.append(frame, relay);
-  relay.submit();
-  window.setTimeout(() => { relay.remove(); frame.remove(); }, 15000);
-};
-
-const queueSubmission = (data) => {
+const saveSubmission = async (data) => {
   const payload = new URLSearchParams();
   data.forEach((value, key) => payload.append(key, String(value)));
-
-  if (typeof navigator.sendBeacon === 'function' && navigator.sendBeacon(submissionUrl, payload)) return;
-  submitWithHiddenForm(data);
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(submissionUrl, {
+      method: 'POST',
+      body: payload,
+      signal: controller.signal
+    });
+    const result = await response.json();
+    if (!response.ok || !result.success) throw new Error(result.error || 'save_failed');
+    return result;
+  } finally {
+    window.clearTimeout(timeout);
+  }
 };
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) {
     error.textContent = 'Please choose a rating for every statement.';
@@ -113,9 +98,18 @@ form.addEventListener('submit', (event) => {
 
   error.textContent = '';
   const submitButton = form.querySelector('button[type="submit"]');
+  const originalButton = submitButton.innerHTML;
   submitButton.disabled = true;
   submitButton.textContent = 'Sending…';
-  queueSubmission(new FormData(form));
+  try {
+    await saveSubmission(new FormData(form));
+  } catch (submissionError) {
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalButton;
+    error.textContent = 'We could not save your response. Please check your connection and try again.';
+    error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
   form.hidden = true;
   document.querySelector('.survey-intro').hidden = true;
   document.querySelector('.survey-progress').hidden = true;
