@@ -1,5 +1,6 @@
 :root{--ink:#170d23;--muted:#716879;--purple:#7440ed;--violet:#ad63ff;--cyan:#25cfc7;--line:78,49,122;--ease:cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html{overflow-x:clip;scroll-behavior:smooth}
 body{margin:0;overflow-x:clip;color:var(--ink);background:radial-gradient(circle at 8% 5%,rgba(177,112,255,.16),transparent 26%),radial-gradient(circle at 92% 36%,rgba(48,217,209,.14),transparent 25%),linear-gradient(180deg,#faf9fd,#f1edf9 54%,#edf7f8);font-family:Manrope,sans-serif;font-size:16px;line-height:1.6}
 body.menu-open{overflow:hidden}
