@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="/assets/css/feedback-v2.css?v=20260907-4">
+  <link rel="stylesheet" href="/assets/css/feedback-v2.css?v=20260907-5">
 </head>
 <body>
   <a class="skip-link" href="#survey">Skip to the survey</a>
@@ -62,15 +62,16 @@
       </div>
     </div>
 
-    <form class="shell survey-form" data-survey-form>
+    <form class="shell survey-form" data-survey-form novalidate>
       <section class="respondent-card" aria-labelledby="respondent-title">
         <div>
-          <p class="kicker"><span></span>About you</p>
+          <p class="kicker"><span></span>Start here <strong>Required</strong></p>
           <h2 id="respondent-title">Which beta tester are you?</h2>
           <p>Use the email connected to your Premium Beta access. It will only be used to identify your feedback.</p>
         </div>
         <label for="respondent-email">Your email address
           <input id="respondent-email" name="respondent-email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+          <small>We use this to match the feedback to the right tester.</small>
         </label>
       </section>
 
@@ -187,6 +188,6 @@
   </main>
 
   <footer class="site-footer"><div class="shell footer-grid"><a class="footer-lockup" href="/"><img src="/assets/img/favicon.webp" alt="" width="512" height="512"><strong>Reaction Creator</strong></a><p>Thank you for helping us improve the Premium Beta.</p><div><a href="/privacy-policy/">Privacy Policy</a><a href="/support/">Support</a></div></div><div class="footer-bottom"><div class="shell">&copy; <span data-year></span> Reaction Creator. All rights reserved.</div></div></footer>
-  <script src="/assets/js/feedback-v2.js?v=20260907-5"></script>
+  <script src="/assets/js/feedback-v2.js?v=20260907-6"></script>
 </body>
 </html>

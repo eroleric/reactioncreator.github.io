@@ -10,6 +10,8 @@ const completed = document.querySelector('[data-completed]');
 const error = document.querySelector('[data-form-error]');
 const finish = document.querySelector('[data-finish]');
 const status = document.querySelector('[data-status]');
+const respondentInput = form.querySelector('#respondent-email');
+const questionCards = [...form.querySelectorAll('.question-card')];
 
 document.querySelectorAll('[data-year]').forEach((node) => {
   node.textContent = new Date().getFullYear();
@@ -62,11 +64,48 @@ const updateProgress = () => {
   progress.setAttribute('aria-valuenow', String(rated));
   progressBar.style.width = `${rated * 10}%`;
   if (rated === 10) completed.textContent = 'All 10 rated';
+  questionCards.forEach((card) => {
+    const answered = Boolean(card.querySelector('.rating input:checked'));
+    card.classList.toggle('is-complete', answered);
+    if (answered) card.classList.remove('is-missing');
+  });
 };
 
 form.addEventListener('change', (event) => {
   if (event.target.matches('.rating input')) updateProgress();
 });
+
+respondentInput.addEventListener('input', () => {
+  const valid = respondentInput.validity.valid;
+  respondentInput.closest('.respondent-card').classList.toggle('is-complete', valid);
+  if (valid) {
+    respondentInput.closest('.respondent-card').classList.remove('is-missing');
+    respondentInput.removeAttribute('aria-invalid');
+  }
+});
+
+const showMissingFields = () => {
+  const emailMissing = !respondentInput.validity.valid;
+  const missingCards = questionCards.filter((card) => !card.querySelector('.rating input:checked'));
+  const respondentCard = respondentInput.closest('.respondent-card');
+  respondentCard.classList.toggle('is-missing', emailMissing);
+  respondentInput.setAttribute('aria-invalid', String(emailMissing));
+  questionCards.forEach((card) => card.classList.toggle('is-missing', missingCards.includes(card)));
+
+  if (!emailMissing && missingCards.length === 0) return false;
+  const parts = [];
+  if (emailMissing) parts.push('your email');
+  if (missingCards.length) parts.push(`${missingCards.length} unanswered ${missingCards.length === 1 ? 'question' : 'questions'}`);
+  error.textContent = `Almost there — complete ${parts.join(' and ')}. The missing items are highlighted.`;
+
+  const firstMissing = emailMissing ? respondentCard : missingCards[0];
+  firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  window.setTimeout(() => {
+    const target = emailMissing ? respondentInput : firstMissing.querySelector('.rating input');
+    target.focus({ preventScroll: true });
+  }, 350);
+  return true;
+};
 
 const saveSubmission = async (data) => {
   const payload = new URLSearchParams();
@@ -89,12 +128,7 @@ const saveSubmission = async (data) => {
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  if (!form.reportValidity()) {
-    error.textContent = 'Please choose a rating for every statement.';
-    const firstMissing = form.querySelector('.rating input:invalid');
-    if (firstMissing) firstMissing.closest('.question-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
+  if (showMissingFields()) return;
 
   error.textContent = '';
   const submitButton = form.querySelector('button[type="submit"]');
