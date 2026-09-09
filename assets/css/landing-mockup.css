@@ -1,7 +1,12 @@
 /* Landing-page-only presentation. Shared chrome and internal pages retain home-v5. */
 #main.landing {
   display: block;
-  background: #f7f8ff;
+  background:
+    radial-gradient(circle at 88% 9%, rgba(205, 234, 255, .72), transparent 24%),
+    radial-gradient(circle at 7% 27%, rgba(229, 218, 255, .62), transparent 26%),
+    radial-gradient(circle at 86% 52%, rgba(216, 239, 255, .58), transparent 28%),
+    radial-gradient(circle at 10% 76%, rgba(231, 221, 255, .5), transparent 27%),
+    linear-gradient(145deg, #faf9ff 0%, #f2f7ff 48%, #f8f6ff 100%);
   --lp-purple: #8245ff;
   --lp-blue: #318bfa;
 }
@@ -12,24 +17,13 @@
   min-height: 0;
   overflow: hidden;
   color: #111024;
-  background: radial-gradient(ellipse at 90% 60%, #e5f3ff88, transparent 65%), radial-gradient(ellipse at 5% 20%, #eee5ff88, transparent 65%), #f9faff;
+  background: transparent;
   scroll-margin-top: 110px;
 }
-#main section:nth-child(even) { background: radial-gradient(ellipse at 75% 30%, #e3efffa8, transparent 70%), radial-gradient(ellipse at 0% 100%, #e9e2ff88, transparent 55%), #fafaff; }
+#main section:nth-child(even) { background: transparent; }
 #main section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 420px;
-  height: 550px;
-  top: 12%;
-  right: -220px;
-  border: 0;
-  border-radius: 63% 37% 67% 33% / 41% 63% 37% 59%;
-  background: linear-gradient(145deg, #d9eaff77, #d9d0ff66);
-  transform: rotate(28deg);
+  display: none;
 }
-#main section:nth-child(even)::before { right: auto; left: -340px; transform: rotate(-35deg); }
 #main h1, #main h2, #main h3 { color: #100e20; letter-spacing: -.055em; line-height: .94; text-wrap: initial; }
 #main h1 { font-size: clamp(38px, 4.8vw, 64px); }
 #main h2 { font-size: clamp(36px, 4.65vw, 60px); }
@@ -52,8 +46,8 @@
 #main .orientation-orbit, #main .orientation-rotate, #main .tool-cloud,
 #main .download-note, #main .download-beam, #main .creator-ticker { display: none; }
 #main .hero::after, #main .instant::after { display: none; }
-#main .hero { padding: 110px 0 25px; }
-#main .hero-layout { height: auto; min-height: 375px; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: auto; align-items: center; gap: 0; padding: 0; }
+#main .hero { min-height: 100svh; display: grid; align-items: center; padding: 105px 0 35px; }
+#main .hero-layout { width: min(1240px, calc(100% - 64px)); height: auto; min-height: calc(100svh - 140px); display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: auto; align-items: center; gap: 28px; padding: 0; }
 #main .hero-copy { position: relative; z-index: 4; padding: 0; }
 #main .hero h1 { max-width: none; }
 #main .hero-lede { max-width: 470px; margin-top: 20px; }
@@ -67,15 +61,15 @@
 #main .button-ghost > span { font-size: 22px; line-height: 1; }
 #main .button-ghost { display: inline-flex; color: #25233b; background: #ffffffb8; box-shadow: 0 12px 25px #cac9eb25; }
 #main .hero-positioning { margin-top: 22px; font-size: 12px; letter-spacing: .03em; }
-#main .hero-visual { position: relative; min-height: 375px; height: 375px; perspective: none; }
+#main .hero-visual { position: relative; min-height: 430px; height: 430px; perspective: none; }
 #main .hero-visual::before { content: ""; position: absolute; inset: -30px -65px -15px -25px; border-radius: 45% 55% 35% 65%; background: linear-gradient(140deg, #e1f8ff80, #c4d9ff9c); transform: rotate(-18deg); }
 #main .hero-visual::after { content: "REACTIONS\A CREATE\A CULTURE"; white-space: pre; position: absolute; top: 55px; right: -5px; color: #7759f6; font: 700 12px/1.35 "Manrope", sans-serif; letter-spacing: .06em; transform: rotate(-13deg); }
 #main .hero-phone-wrap { position: absolute; top: auto; bottom: auto; margin: 0; }
-#main .hero-phone-primary { width: 190px; left: 42%; top: -5px; transform: rotate(3deg); z-index: 3; }
-#main .hero-phone-secondary { width: 158px; left: 21%; top: 45px; transform: rotate(-5deg); z-index: 2; }
+#main .hero-phone-primary { width: 215px; left: 42%; top: 0; transform: rotate(3deg); z-index: 3; }
+#main .hero-phone-secondary { width: 176px; left: 18%; top: 55px; transform: rotate(-5deg); z-index: 2; }
 #main .device-crop { filter: drop-shadow(0 17px 16px #22203d35); }
 #main .hero-chip-layout, #main .hero-chip-export { display: none; }
-#main .hero-chip-source { top: 165px; right: -8px; left: auto; bottom: auto; min-width: 0; display: block; padding: 13px 18px; border: 0; border-radius: 14px; background: #ffffffeb; color: #393154; box-shadow: 0 10px 25px #888ac329; transform: none; }
+#main .hero-chip-source { top: 185px; right: -8px; left: auto; bottom: auto; min-width: 0; display: block; padding: 13px 18px; border: 0; border-radius: 14px; background: #ffffffeb; color: #393154; box-shadow: 0 10px 25px #888ac329; transform: none; }
 #main .hero-chip-source .chip-dot { display: none; }
 #main .hero-chip-source small, #main .hero-chip-source strong { display: block; color: inherit; font: 15px/1.12 Georgia, serif; }
 #main .hero-chip-source small { letter-spacing: 0; text-transform: none; }
