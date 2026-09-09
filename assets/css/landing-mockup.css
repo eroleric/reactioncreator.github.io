@@ -1,4 +1,9 @@
 /* Landing-page-only presentation. Shared chrome and internal pages retain home-v5. */
+html,
+body {
+  scroll-behavior: auto;
+}
+
 #main.landing {
   display: block;
   background:
