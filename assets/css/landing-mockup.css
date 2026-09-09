@@ -163,8 +163,22 @@
 #main .download-mark figcaption { min-width: 175px; padding: 0; margin-top: 8px; border: 0; border-radius: 14px; background: #174873bd; }
 #main .lp-download-button { display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; color: white; font-size: 12px; font-weight: 800; }
 #main a:focus-visible { outline: 3px solid #a054ff; outline-offset: 5px; }
-@media (min-width: 1500px) {
-  #main .hero { padding-top: 130px; }
+@media (min-width: 1051px) {
+  #main .hero { padding: 112px 0 40px; }
+  #main .hero-layout { width: min(1320px, calc(100% - 112px)); min-height: calc(100svh - 152px); grid-template-columns: 1.16fr 1fr; gap: 12px; }
+  #main .hero h1 { font-size: clamp(54px, 5.25vw, 76px); line-height: .98; letter-spacing: -.058em; }
+  #main .hero-copy .kicker { margin-bottom: 20px; font-size: 11px; }
+  #main .hero-lede { max-width: 510px; margin-top: 25px; color: #666782; font-size: 18px; line-height: 1.5; }
+  #main .hero-actions { margin-top: 30px; gap: 18px; }
+  #main .hero-actions .button { min-height: 56px; }
+  #main .hero-positioning { margin-top: 24px; color: #7c7895; font-size: 12px; }
+  #main .hero-visual { height: clamp(470px, 39vw, 560px); min-height: 0; }
+  #main .hero-phone-primary { width: clamp(225px, 19.5vw, 270px); left: 37%; top: 0; transform: rotate(4deg); }
+  #main .hero-phone-secondary { width: clamp(186px, 16.2vw, 224px); left: 5%; top: 65px; transform: rotate(-8deg); }
+  #main .hero-visual::before { inset: -5% -12% -3% -13%; border-radius: 46% 54% 39% 61%; background: radial-gradient(ellipse at 58% 55%, #bfceffb3, #d9e9ff88 50%, #e6f5ff00 74%); transform: rotate(-12deg); }
+  #main .hero-visual::after { top: 18px; right: -12px; font-size: 12px; }
+  #main .hero-chip-source { top: 47%; right: -10px; padding: 16px 20px; border-radius: 16px; box-shadow: 0 15px 35px #667ab32b; }
+  #main .hero-chip-source small, #main .hero-chip-source strong { font-size: 17px; line-height: 1.15; }
 }
 @media (min-width: 721px) and (max-width: 1050px) {
   #main .shell { width: calc(100% - 80px); }
