@@ -442,3 +442,34 @@ body {
   html.no-gsap .footer-bottom { flex-direction: row; align-items: center; gap: 12px; padding-top: 18px; font-size: 9px; line-height: 1.35; }
   html.no-gsap .footer-bottom span:last-child { text-align: right; }
 }
+
+/* A conventional three-line mobile menu icon with a clean close state. */
+@media (max-width: 720px) {
+  html.no-gsap .nav-toggle-icon {
+    position: relative;
+    width: 20px;
+    height: 14px;
+    flex: 0 0 20px;
+  }
+
+  html.no-gsap .nav-toggle-icon i,
+  html.no-gsap .nav-toggle-icon i:first-child,
+  html.no-gsap .nav-toggle-icon i:last-child,
+  html.no-gsap .nav-toggle.is-open .nav-toggle-icon i {
+    right: auto;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background: #20152e;
+    box-shadow: none;
+    transform: none;
+    transition: top 180ms var(--ease), transform 180ms var(--ease), opacity 140ms ease;
+  }
+
+  html.no-gsap .nav-toggle-icon i:first-child { top: 0; }
+  html.no-gsap .nav-toggle-icon i:nth-child(2) { top: 6px; }
+  html.no-gsap .nav-toggle-icon i:last-child { top: 12px; }
+  html.no-gsap .nav-toggle.is-open .nav-toggle-icon i:first-child { top: 6px; transform: rotate(45deg); }
+  html.no-gsap .nav-toggle.is-open .nav-toggle-icon i:nth-child(2) { opacity: 0; transform: scaleX(.35); }
+  html.no-gsap .nav-toggle.is-open .nav-toggle-icon i:last-child { top: 6px; transform: rotate(-45deg); }
+}
