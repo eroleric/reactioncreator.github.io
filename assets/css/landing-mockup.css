@@ -298,6 +298,47 @@ body {
   #main .orientation-stack::after { display: none; }
 }
 
+/* Good take: four clear steps over the existing page background. */
+#main .instant-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); gap: 48px 36px; padding: 48px 0; }
+#main .instant-copy h2 { font-family: "Manrope", sans-serif; font-weight: 800; font-size: clamp(36px, 4.3vw, 64px); line-height: 1.06; letter-spacing: -.065em; }
+#main .instant-copy h2 em { position: relative; display: inline-block; white-space: nowrap; }
+#main .instant-copy h2 em::after { content: ""; position: absolute; right: 3%; bottom: -12px; width: 45%; height: 9px; border-top: 4px solid #a79bf5; border-radius: 50%; transform: rotate(-3deg); opacity: .65; }
+#main .instant-copy > p:last-child { max-width: 430px; margin-top: 28px; font-size: clamp(15px, 1.45vw, 20px); line-height: 1.5; }
+#main .export-system { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; max-width: 100%; padding: 24px 20px 20px; gap: 10px; }
+#main .export-step { flex-direction: column; justify-content: flex-start; min-width: 0; min-height: 235px; padding: 22px 8px; gap: 12px; text-align: center; border-radius: 20px; font-family: "Manrope", sans-serif; }
+#main .export-step strong { font-family: inherit; font-size: clamp(16px, 1.65vw, 24px); font-weight: 800; letter-spacing: -.04em; }
+#main .export-step p { margin: 0; font-size: clamp(12px, 1.2vw, 16px); line-height: 1.45; color: #646785; }
+#main .export-step .material-symbols-rounded { flex: 0 0 72px; width: 72px; height: 72px; font-size: 44px; border-radius: 21px; }
+#main .export-step:nth-child(3) .material-symbols-rounded { background: #e7effd; }
+#main .export-step:nth-child(4) .material-symbols-rounded { background: #f6e7f1; }
+#main .export-system::after { content: "SIMPLE · POWERFUL · CREATOR-FIRST"; grid-column: 1 / -1; position: static; margin-top: 16px; padding: 8px 0; color: #795aff; font-size: 10px; letter-spacing: .19em; line-height: 1.5; text-align: center; white-space: normal; transform: none; }
+#main .instant-benefits { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); width: 86%; margin: 0 auto; padding: 0; list-style: none; }
+#main .instant-benefits li { display: flex; align-items: center; justify-content: center; gap: 14px; color: #8588aa; font-size: 15px; line-height: 1.4; }
+#main .instant-benefits li + li { border-left: 1px solid #bdc2e455; }
+#main .instant-benefits .material-symbols-rounded { display: grid; place-items: center; width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: #e9e8fc99; color: #6e55ed; font-size: 29px; }
+@media (max-width: 900px) {
+  #main .instant-layout { grid-template-columns: 1fr; gap: 30px; }
+  #main .instant-copy h2 { font-size: clamp(36px, 7vw, 54px); }
+  #main .instant-copy > p:last-child { max-width: 470px; }
+  #main .export-step { min-height: 200px; }
+  #main .instant-benefits { width: 100%; }
+}
+@media (max-width: 600px) {
+  #main .instant-layout { gap: 26px; padding: 24px 0; }
+  #main .instant-copy h2 { font-size: clamp(32px, 9vw, 48px); }
+  #main .instant-copy > p:last-child { margin-top: 24px; font-size: 14px; }
+  #main .export-system { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 14px; gap: 10px; border-radius: 24px; }
+  #main .export-step { min-height: 170px; padding: 16px 8px; gap: 8px; border-radius: 16px; }
+  #main .export-step strong { font-size: 19px; }
+  #main .export-step p { font-size: 13px; }
+  #main .export-step .material-symbols-rounded { flex-basis: 52px; width: 52px; height: 52px; font-size: 34px; border-radius: 16px; }
+  #main .export-system::after { margin-top: 4px; font-size: 8px; letter-spacing: .12em; }
+  #main .instant-benefits { grid-template-columns: repeat(2, 1fr); gap: 18px 8px; }
+  #main .instant-benefits li { justify-content: flex-start; gap: 9px; font-size: 12px; }
+  #main .instant-benefits li + li { border: 0; }
+  #main .instant-benefits .material-symbols-rounded { width: 38px; height: 38px; font-size: 25px; }
+}
+
 /* Responsive closing card, shared by phone and desktop layouts. */
 #main .download-panel.download-refresh {
   isolation: isolate;
