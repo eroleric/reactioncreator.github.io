@@ -1,4 +1,21 @@
 /* Pricing-specific layout, preserving all plan content and controls. */
+html #main .plan-tabs button { border: 1px solid transparent; border-radius: 18px; transition: background .2s, border-color .2s; }
+html #main .plan-tabs button[aria-selected="true"] { background: linear-gradient(135deg,#eee5ff,#e5efff); border-color: #bda5ef; box-shadow: 0 6px 18px #8565c51a; }
+html #main .plan-tabs button[aria-selected="true"] :is(small,strong,span) { color: #382254; }
+html #main .plan-tabs button:focus-visible { outline: 3px solid #8245ff; outline-offset: 3px; }
+html #main .plan-tabs .plan-price { display: block; font-size: clamp(22px,3vw,36px); color: #21123f; line-height: 1.3; margin-block: 8px; letter-spacing: -.04em; }
+html #main .plan-price sup { vertical-align: baseline; font-size: 12px; font-weight: 500; letter-spacing: 0; margin-left: 3px; color: #626079; }
+html #main .plan-rate { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin: 12px 0 24px; }
+html #main .plan-rate strong { font: 800 clamp(38px,4vw,54px)/1.1 Manrope,sans-serif; letter-spacing: -.055em; color: #7542db; }
+html #main .plan-rate span { font-size: 12px; color: #666781; }
+html #main .plan-panel--annual { border-color: #d6c5f8; }
+html #main .plan-panel .plan-eyebrow { color: #7542db !important; }
+html #main .comparison tbody td:nth-child(2) { background: #ede5ff66; }
+@media(max-width:600px) {
+  html #main .plan-tabs .plan-price { font-size: 21px; margin-block: 2px; }
+  html #main .plan-price sup { display: block; font-size: 10px; margin: 0; }
+  html #main .plan-rate { margin-bottom: 18px; }
+}
 html #main > section:not(.shared-download) { padding-block: 56px; min-height: 0; }
 html #main .shell { width: min(1120px, calc(100% - 64px)); }
 html #main > section.pricing-hero { padding: 122px 0 40px; }
