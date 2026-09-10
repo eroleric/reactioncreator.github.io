@@ -1,0 +1,101 @@
+/* Features presentation, using the landing page's compact visual rhythm. */
+html #main .shell { width: min(1120px, calc(100% - 64px)); }
+html #main > section { padding-block: 64px; min-height: 0; }
+html #main .feature-hero { padding: 110px 0 32px; }
+html #main .feature-hero__layout { min-height: 580px; padding-block: 0; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 28px; }
+html #main .feature-hero__copy { grid-column: 1; text-align: left; }
+html #main .feature-hero h1 { font-size: clamp(40px, 4.6vw, 60px); }
+html #main .feature-hero__lede { margin-top: 22px; font-size: 15px; line-height: 1.65; }
+html #main .hero-actions { justify-content: flex-start; margin-top: 24px; }
+html #main .hero-signals { gap: 8px; margin-top: 24px; }
+html #main .hero-signals li { padding: 12px 9px; gap: 7px; }
+html #main .hero-signals strong { color: #8245ff; font-size: 23px; }
+html #main .feature-hero__visual { grid-column: 2; min-height: 550px; margin: 0; width: 100%; }
+html #main .hero-device--front { width: 43%; left: 4%; top: 5%; }
+html #main .hero-device--back { width: 39%; right: 5%; top: 12%; opacity: 1; }
+html #main .hero-device--wide { width: 94%; bottom: 0; opacity: 1; }
+html #main .hero-orbit { display: none; }
+html #main .feature-chip--sync { left: 32%; top: 3%; }
+html #main .feature-chip--layout { right: 0; bottom: 27%; }
+html #main .hero-device .device-crop { filter: drop-shadow(0 18px 22px #35215330); }
+html #main :is(.section-intro, .layout-lab__heading) { gap: 18px 40px; }
+html #main .flow-line { margin-top: 32px; gap: 14px; }
+html #main .flow-line li { min-height: 210px; padding: 36px 22px 24px; background: #ffffffa6; border: 1px solid #fff; }
+html #main .flow-line strong { margin-top: 14px; font-family: Manrope, sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -.04em; }
+html #main .flow-line::before { display: none; }
+html #main .layout-story { display: block; margin-top: 32px; }
+html #main .layout-story__visual { display: none; }
+html #main .layout-story__steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+html #main .layout-step { position: relative; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 130px; align-content: center; column-gap: 20px; padding: 28px; opacity: 1; border: 1px solid #fff; border-radius: 24px; background: #ffffffa6; box-shadow: 0 18px 45px #9caed417; }
+html #main .layout-step > :not(figure) { grid-column: 1; }
+html #main .layout-step h3 { margin-top: 12px; font-size: 28px; }
+html #main .layout-step > p:not(.layout-step__number) { margin-top: 14px; font-size: 13px; line-height: 1.55; }
+html #main .layout-step ul { margin-top: 16px; gap: 6px; }
+html #main .layout-step li { padding: 6px 8px; font-size: 9px; }
+html #main .layout-step__mobile { display: block; grid-column: 2; grid-row: 1 / 5; width: 100%; margin: 0; align-self: center; }
+html #main .layout-step__mobile--wide { width: 100%; }
+html #main .record-together__layout { min-height: 0; grid-template-columns: 1fr 1.1fr; gap: 40px; }
+html #main .record-together__device { width: 100%; }
+html #main .finish-paths { margin-top: 32px; grid-template-columns: 1fr 1fr; }
+html #main .finish-card { min-height: 510px; }
+html #main .finish-card__copy { padding: 28px; }
+html #main .finish-card--editor { grid-template-columns: 1fr; }
+html #main .editor-device { width: 155px; justify-self: center; margin: 0; }
+html #main .project-continuity__layout { grid-template-columns: .85fr 1.15fr; gap: 40px; }
+html #main .library-stack { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+html #main .library-card { position: relative; inset: auto; width: 100%; transform: none; }
+html #main .library-card > div { padding: 22px 18px; }
+html #main .library-card strong { font-size: 22px; }
+html #main .library-card figure { padding-inline: 26px; }
+html #main .creator-fit__grid { margin-top: 32px; gap: 14px; }
+html #main .creator-fit__grid article { min-height: 220px; background: #ffffffa6; border-color: #fff; }
+html #main .creator-fit__grid h3 { margin-top: 28px; font-size: 27px; }
+html #main .feature-faq__layout { grid-template-columns: .8fr 1.2fr; gap: 40px; }
+html #main .feature-faq__list { border: 0; }
+html #main .feature-faq details { margin-bottom: 10px; padding: 0 20px; border: 1px solid #fff; border-radius: 18px; background: #ffffffa6; }
+html #main .feature-faq summary { min-height: 76px; font-size: 22px; }
+html #main .feature-faq summary span { flex-shrink: 0; }
+html #main .feature-download__panel { min-height: 300px; padding: 34px 40px; grid-template-columns: 1fr 220px; gap: 32px; }
+html #main .feature-download__mark { width: 190px; }
+html #main .feature-download__actions small { color: #74758f; }
+@media (max-width: 940px) {
+  html #main .feature-hero__layout { grid-template-columns: 1fr; }
+  html #main .feature-hero__visual { grid-column: 1; width: min(500px, 100%); }
+  html #main .layout-step { grid-template-columns: 1fr; }
+  html #main .layout-step__mobile { grid-column: 1; grid-row: auto; width: 120px; margin: 22px auto 0; }
+  html #main .layout-step__mobile--wide { width: 100%; }
+  html #main :is(.record-together__layout, .project-continuity__layout, .feature-faq__layout) { grid-template-columns: 1fr; }
+  html #main .record-together__device { max-width: 620px; justify-self: center; }
+  html #main .library-stack { max-width: 580px; }
+  html #main .creator-fit__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  html #main .shell { width: calc(100% - 32px); }
+  html #main > section { padding-block: 36px; }
+  html #main .feature-hero { padding-top: 106px; }
+  html #main .feature-hero h1 { font-size: clamp(36px, 9vw, 48px); }
+  html #main .feature-hero__visual { min-height: 390px; }
+  html #main .hero-signals li { grid-template-columns: 1fr; }
+  html #main .hero-signals span { font-size: 8px; }
+  html #main .feature-chip { padding: 8px; }
+  html #main .feature-chip strong { font-size: 9px; }
+  html #main :is(.section-intro, .layout-lab__heading, .finish-paths) { grid-template-columns: 1fr; }
+  html #main .flow-line { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-left: 0; }
+  html #main .flow-line::after, html #main .flow-line li::before { display: none; }
+  html #main .flow-line strong { display: block; margin: 12px 0 0; }
+  html #main .flow-line span { padding-left: 0; }
+  html #main .flow-line li { padding: 34px 16px 20px; }
+  html #main .flow-line strong { font-size: 23px; }
+  html #main .layout-story__steps { grid-template-columns: 1fr; }
+  html #main .layout-step { padding: 24px; }
+  html #main .layout-step__mobile { width: 140px; }
+  html #main .layout-step__mobile--wide { width: 100%; }
+  html #main .finish-card { min-height: 480px; }
+  html #main .library-card > div { padding: 16px 12px; }
+  html #main .library-card strong { font-size: 18px; }
+  html #main .library-card figure { padding-inline: 12px; }
+  html #main .creator-fit__grid article { padding: 20px 16px; }
+  html #main .creator-fit__grid h3 { font-size: 24px; }
+  html #main .feature-download__panel { grid-template-columns: 1fr; padding: 26px 22px; }
+  html #main .feature-download__mark { width: 110px; }
+}
